@@ -55,6 +55,12 @@ export default function QuotePage() {
         })
       });
 
+      // Handle non-JSON responses (e.g. Vercel error pages)
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Server returned ${response.status}: not a JSON response`);
+      }
+
       const result = await response.json();
 
       if (result.success) {
@@ -66,10 +72,11 @@ export default function QuotePage() {
       } else {
         throw new Error(result.error || 'Failed to send');
       }
-    } catch (error) {
+    } catch (error: any) {
+      const msg = error?.message || 'Unknown error';
       toast({
         title: "ERROR",
-        description: "Failed to send request. Please try calling us instead.",
+        description: `Failed to send: ${msg}. Please try calling us instead.`,
         variant: "destructive"
       });
     } finally {

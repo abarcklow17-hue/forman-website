@@ -12,23 +12,26 @@ async function sendDiscordNotification(data: {
   photoCount: number;
 }) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  if (!webhookUrl) {
+    console.log('[Discord] No DISCORD_WEBHOOK_URL set, skipping.');
+    return { sent: false, reason: 'not configured' };
+  }
 
   const embed = {
     title: '🚛 New Quote Request',
-    color: 0xb71212, // brand red
+    color: 0xb71212,
     fields: [
-      { name: '👤 Name', value: data.name, inline: true },
-      { name: '📞 Phone', value: data.phone, inline: true },
-      { name: '📍 Location', value: data.location, inline: true },
-      { name: '📋 Project Details', value: data.project.slice(0, 1024) },
+      { name: '👤 Name', value: data.name || 'N/A', inline: true },
+      { name: '📞 Phone', value: data.phone || 'N/A', inline: true },
+      { name: '📍 Location', value: data.location || 'N/A', inline: true },
+      { name: '📋 Project Details', value: (data.project || 'N/A').slice(0, 1024) },
       { name: '📸 Photos', value: `${data.photoCount} attached to email`, inline: true },
     ],
     timestamp: new Date().toISOString(),
     footer: { text: 'Forman Haulage • Quote Form' },
   };
 
-  await fetch(webhookUrl, {
+  const res = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -36,6 +39,14 @@ async function sendDiscordNotification(data: {
       embeds: [embed],
     }),
   });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Discord webhook failed (${res.status}): ${text}`);
+  }
+
+  console.log('[Discord] Notification sent successfully.');
+  return { sent: true };
 }
 
 // ── Email via Nodemailer ─────────────────────────────────────────────
@@ -48,13 +59,29 @@ async function sendEmail(data: {
 }) {
   const user = process.env.EMAIL_USER || 'formanandco@gmail.com';
   const pass = process.env.EMAIL_APP_PASSWORD;
-  if (!pass) return;
 
-  const nodemailer = (await import('nodemailer')).default;
+  if (!pass) {
+    console.log('[Email] No EMAIL_APP_PASSWORD set, skipping.');
+    return { sent: false, reason: 'not configured' };
+  }
+
+  // Dynamic import to avoid bundling issues
+  let nodemailer;
+  try {
+    nodemailer = (await import('nodemailer')).default;
+  } catch (importErr) {
+    console.error('[Email] Failed to import nodemailer:', importErr);
+    throw new Error('Failed to load email module');
+  }
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: { user, pass },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   const htmlContent = `
@@ -95,6 +122,9 @@ async function sendEmail(data: {
     html: htmlContent,
     attachments,
   });
+
+  console.log('[Email] Sent successfully.');
+  return { sent: true };
 }
 
 // ── API Handler ──────────────────────────────────────────────────────
@@ -103,33 +133,49 @@ export async function POST(request: Request) {
     const formData = await request.json();
     const { name, phone, location, project, photos = [] } = formData;
 
-    // Fire both in parallel — if one fails the other still goes through
-    const results = await Promise.allSettled([
+    console.log(`[Quote] Received from ${name} (${phone}) in ${location}. Photos: ${photos.length}`);
+
+    // Fire both in parallel
+    const [emailResult, discordResult] = await Promise.allSettled([
       sendEmail({ name, phone, location, project, photos }),
       sendDiscordNotification({ name, phone, location, project, photoCount: photos.length }),
     ]);
 
-    // Log any individual failures but don't fail the whole request
-    results.forEach((result, i) => {
-      if (result.status === 'rejected') {
-        console.error(`Notification channel ${i} failed:`, result.reason);
-      }
-    });
+    const emailOk = emailResult.status === 'fulfilled';
+    const discordOk = discordResult.status === 'fulfilled';
 
-    // Only fail if BOTH channels failed AND at least one was configured
-    const hasEmail = !!process.env.EMAIL_APP_PASSWORD;
-    const hasDiscord = !!process.env.DISCORD_WEBHOOK_URL;
-    const allFailed = results.every(r => r.status === 'rejected');
+    if (!emailOk) console.error('[Quote] Email failed:', (emailResult as PromiseRejectedResult).reason);
+    if (!discordOk) console.error('[Quote] Discord failed:', (discordResult as PromiseRejectedResult).reason);
 
-    if (allFailed && (hasEmail || hasDiscord)) {
-      throw new Error('All notification channels failed');
+    // Succeed if EITHER channel delivered, or if neither was configured
+    const emailConfigured = !!process.env.EMAIL_APP_PASSWORD;
+    const discordConfigured = !!process.env.DISCORD_WEBHOOK_URL;
+    const anyDelivered = emailOk || discordOk;
+    const noneConfigured = !emailConfigured && !discordConfigured;
+
+    if (anyDelivered || noneConfigured) {
+      return NextResponse.json({
+        success: true,
+        channels: {
+          email: emailOk ? 'sent' : emailConfigured ? 'failed' : 'not configured',
+          discord: discordOk ? 'sent' : discordConfigured ? 'failed' : 'not configured',
+        },
+      });
     }
 
-    return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error('Error processing quote request:', error);
+    // Both configured channels failed
+    const errors = [];
+    if (!emailOk) errors.push(`Email: ${(emailResult as PromiseRejectedResult).reason?.message}`);
+    if (!discordOk) errors.push(`Discord: ${(discordResult as PromiseRejectedResult).reason?.message}`);
+
     return NextResponse.json(
-      { success: false, error: error?.message || 'Failed to send quote request' },
+      { success: false, error: errors.join('; ') },
+      { status: 500 }
+    );
+  } catch (error: any) {
+    console.error('[Quote] Unexpected error:', error);
+    return NextResponse.json(
+      { success: false, error: error?.message || 'Unexpected server error' },
       { status: 500 }
     );
   }
