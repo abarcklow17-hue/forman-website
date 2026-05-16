@@ -21,11 +21,12 @@ export function Hero() {
             fill
             className="object-cover brightness-[0.7] scale-105"
             priority
+            data-ai-hint={heroImg.imageHint}
           />
-          {/* Professional Frost-Blur Overlay - Glassmorphism */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[12px] z-10" />
+          {/* Professional Glassmorphism Overlay */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[6px] z-10" />
           {/* Subtle Vertical Gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-20" />
         </div>
       )}
 
