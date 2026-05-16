@@ -5,79 +5,86 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-[#050505] border-t border-white/5 pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="bg-primary p-2 rounded-md">
-                <Truck className="w-5 h-5 text-primary-foreground" />
+    <footer className="bg-[#050505] border-t border-white/5 pt-24 pb-12 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+          <div className="space-y-8">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary flex items-center justify-center">
+                <Truck className="w-5 h-5 text-white" />
               </div>
-              <span className="font-headline text-lg font-bold tracking-tight">
+              <span className="font-headline text-2xl font-black tracking-tighter uppercase italic">
                 FORMAN <span className="text-primary">&</span> CO
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Premium junk removal and property cleanout services in Northern Colorado. Licensed, insured, and family-owned.
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-medium uppercase tracking-tight">
+              Northern Colorado's leading professional mobile junk removal service. We haul, you relax.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-sm">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-sm">
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="font-headline font-bold mb-6 text-white uppercase tracking-wider text-xs">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><Link href="/services" className="hover:text-primary transition-colors">All Services</Link></li>
-              <li><Link href="/gallery" className="hover:text-primary transition-colors">Job Gallery</Link></li>
-              <li><Link href="/estimate" className="hover:text-primary transition-colors">Get Estimate</Link></li>
+            <h4 className="font-black mb-8 text-white uppercase tracking-[0.2em] text-xs italic">Agency Links</h4>
+            <ul className="space-y-4 text-xs font-bold text-muted-foreground uppercase tracking-widest">
+              <li><Link href="/services" className="hover:text-primary transition-colors">Project Portfolio</Link></li>
+              <li><Link href="/estimate" className="hover:text-primary transition-colors">Instant Quote</Link></li>
               <li><Link href="/service-areas" className="hover:text-primary transition-colors">Service Areas</Link></li>
-              <li><Link href="/reviews" className="hover:text-primary transition-colors">Customer Reviews</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About Archie</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-headline font-bold mb-6 text-white uppercase tracking-wider text-xs">Contact Archie</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:9704007357" className="hover:text-white">(970) 400-7357</a>
+            <h4 className="font-black mb-8 text-white uppercase tracking-[0.2em] text-xs italic">Contact Archie</h4>
+            <ul className="space-y-6 text-xs font-bold text-muted-foreground uppercase tracking-widest">
+              <li className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Phone className="w-3 h-3 text-primary" />
+                </div>
+                <a href="tel:9704007357" className="hover:text-white transition-colors">(970) 400-7357</a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:abarcklow17@gmail.com" className="hover:text-white">abarcklow17@gmail.com</a>
+              <li className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Mail className="w-3 h-3 text-primary" />
+                </div>
+                <a href="mailto:formanandco@gmail.com" className="hover:text-white transition-colors">formanandco@gmail.com</a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span>Serving Greeley, Fort Collins, Loveland & surrounding Weld County.</span>
+              <li className="flex items-start gap-4 group">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                  <MapPin className="w-3 h-3 text-primary" />
+                </div>
+                <span className="leading-relaxed">Serving Greeley, Fort Collins & surrounding Weld County.</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-headline font-bold mb-6 text-white uppercase tracking-wider text-xs">Book Now</h4>
-            <p className="text-sm text-muted-foreground mb-4">
-              Ready to clear the clutter? Our team is standing by for same-day service.
+            <h4 className="font-black mb-8 text-white uppercase tracking-[0.2em] text-xs italic">Request Discovery</h4>
+            <p className="text-[10px] text-muted-foreground mb-6 font-bold uppercase tracking-widest leading-relaxed">
+              READY TO CLEAR THE CLUTTER? OUR TEAM IS STANDING BY FOR SAME-DAY SERVICE.
             </p>
             <Link 
               href="/estimate"
-              className="inline-block w-full py-3 px-6 bg-primary text-white text-center font-bold rounded-md hover:bg-primary/90 transition-colors"
+              className="btn-premium w-full block text-center py-4"
             >
-              Request A Quote
+              GET A FREE QUOTE
             </Link>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground uppercase tracking-widest">
-          <p>© {currentYear} FORMAN & CO JUNK REMOVAL. ALL RIGHTS RESERVED.</p>
-          <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] text-muted-foreground uppercase tracking-[0.4em] font-black italic">
+          <p>© {currentYear} FORMAN & CO MOBILE JUNK REMOVAL.</p>
+          <div className="flex gap-12">
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { MessageSquare, X, Bot, ArrowRight, Camera, Send } from 'lucide-react';
+import { MessageSquare, X, Bot, ArrowRight, Camera, Send, Truck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,44 +14,36 @@ type Step = {
 const STEPS: Record<string, Step> = {
   start: {
     id: 'start',
-    message: "Hey! I'm Archie's Assistant. Need a quick quote for a project in Greeley or nearby?",
+    message: "Welcome to Forman & Co. I'm Archie's Assistant. Are you looking to reclaim your space today?",
     options: [
-      { label: "Yes, I need a quote", nextId: 'quote_info' },
-      { label: "What areas do you serve?", nextId: 'areas' },
-      { label: "What can you haul?", nextId: 'services' },
+      { label: "YES, NEED A QUOTE", nextId: 'quote_info' },
+      { label: "WHAT AREAS?", nextId: 'areas' },
+      { label: "WHAT ITEMS?", nextId: 'services' },
     ]
   },
   quote_info: {
     id: 'quote_info',
-    message: "Archie gives the best quotes when he can see the job. Would you like to use our guided photo form or just send a text?",
+    message: "Excellent. Archie provides the most accurate quotes via photos. Would you like to use our site form or text Archie directly?",
     options: [
-      { label: "Use the site form", nextId: null, action: () => window.location.href = '/estimate' },
-      { label: "Text Archie now", nextId: null, action: () => window.location.href = 'tel:9704007357' },
-      { label: "Tell me more first", nextId: 'how_it_works' },
+      { label: "USE WEBSITE FORM", nextId: null, action: () => window.location.href = '/estimate' },
+      { label: "TEXT (970) 400-7357", nextId: null, action: () => window.location.href = 'tel:9704007357' },
+      { label: "BACK TO MAIN", nextId: 'start' },
     ]
   },
   areas: {
     id: 'areas',
-    message: "We're local Greeley haulers, but we hit Windsor, Evans, Johnstown, Fort Collins, and all of Weld County. Ready to book?",
+    message: "We're based in Greeley, but we serve Fort Collins, Windsor, Loveland, Eaton, and all of Weld County. Ready for a quote?",
     options: [
-      { label: "Yes, get quote", nextId: 'quote_info' },
-      { label: "Back to main", nextId: 'start' },
+      { label: "GET QUOTE NOW", nextId: 'quote_info' },
+      { label: "BACK TO MAIN", nextId: 'start' },
     ]
   },
   services: {
     id: 'services',
-    message: "We haul almost everything: Furniture, Appliances, Yard Waste, Hot Tubs, Construction Debris... you name it, we haul it. Need something gone?",
+    message: "We take Furniture, Electronics, Mattresses, Clutter, Yard Waste, and Construction Debris. If it's not hazardous, we haul it. Ready?",
     options: [
-      { label: "Yes, get quote", nextId: 'quote_info' },
-      { label: "Back to main", nextId: 'start' },
-    ]
-  },
-  how_it_works: {
-    id: 'how_it_works',
-    message: "Simple: 1. Send us info & photos. 2. Archie calls with a firm price. 3. We haul it and you relax. Ready?",
-    options: [
-      { label: "Let's go!", nextId: null, action: () => window.location.href = '/estimate' },
-      { label: "Back to main", nextId: 'start' },
+      { label: "START QUOTE", nextId: 'quote_info' },
+      { label: "BACK TO MAIN", nextId: 'start' },
     ]
   }
 };
@@ -81,42 +73,44 @@ export function SmartConcierge() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+    <div className="fixed bottom-8 right-8 z-[100] flex flex-col items-end">
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="w-[380px] bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden mb-4 flex flex-col h-[550px]"
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="w-[400px] bg-zinc-950 border border-white/10 rounded-sm shadow-2xl overflow-hidden mb-6 flex flex-col h-[600px] relative"
           >
-            <div className="bg-gradient-to-r from-primary to-[#8b0000] p-5 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-white" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+            
+            <div className="p-6 bg-zinc-900/50 flex items-center justify-between border-b border-white/5">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary flex items-center justify-center">
+                  <Truck className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-black uppercase text-sm tracking-widest text-white italic">Quote Assistant</h4>
-                  <div className="flex items-center gap-1.5">
+                  <h4 className="font-black uppercase text-xs tracking-widest text-white italic leading-none">Quote Assistant</h4>
+                  <div className="flex items-center gap-2 mt-1">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-[10px] font-bold text-white/70 uppercase">Online Now</span>
+                    <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">Active Discovery</span>
                   </div>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/60 hover:text-white transition-colors">
+              <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white transition-colors">
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-zinc-900/50">
+            <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-zinc-950/20 custom-scrollbar">
               {history.map((msg, idx) => (
                 <div key={idx} className={cn(
-                  "flex flex-col gap-1 max-w-[85%]",
+                  "flex flex-col gap-2 max-w-[90%]",
                   msg.type === 'user' ? "ml-auto items-end" : "mr-auto items-start"
                 )}>
                    <div className={cn(
-                    "p-4 rounded-xl text-sm leading-relaxed shadow-lg",
-                    msg.type === 'user' ? "bg-primary text-white" : "bg-zinc-800 text-white border border-white/5"
+                    "p-5 rounded-none text-sm leading-relaxed",
+                    msg.type === 'user' ? "bg-primary text-white font-black italic uppercase" : "bg-zinc-900 text-white border border-white/5 font-medium"
                   )}>
                     {msg.text}
                   </div>
@@ -124,13 +118,13 @@ export function SmartConcierge() {
               ))}
             </div>
 
-            <div className="p-4 bg-zinc-950 border-t border-white/5">
-              <div className="flex flex-wrap gap-2">
+            <div className="p-6 bg-zinc-950 border-t border-white/5">
+              <div className="flex flex-wrap gap-3">
                 {STEPS[currentStep].options.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleOption(opt)}
-                    className="px-4 py-2 bg-zinc-800 hover:bg-primary border border-white/5 text-[10px] font-black uppercase rounded-full transition-all text-white italic"
+                    className="px-5 py-3 bg-zinc-800 hover:bg-primary border border-white/5 text-[9px] font-black uppercase rounded-none transition-all text-white italic tracking-widest"
                   >
                     {opt.label}
                   </button>
@@ -144,16 +138,19 @@ export function SmartConcierge() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl active:scale-95 group",
+          "w-20 h-20 flex items-center justify-center transition-all duration-300 shadow-2xl active:scale-95 group relative",
           isOpen ? "bg-zinc-900 border border-white/10" : "bg-primary"
         )}
       >
+        <div className="absolute inset-0 bg-primary/20 animate-ping rounded-none group-hover:bg-primary/40 -z-10" />
         {isOpen ? (
-          <X className="w-8 h-8 text-white" />
+          <X className="w-10 h-10 text-white" />
         ) : (
           <div className="relative">
-             <MessageSquare className="w-8 h-8 text-white" />
-             <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-primary" />
+             <MessageSquare className="w-10 h-10 text-white" />
+             <div className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-none flex items-center justify-center">
+               <div className="w-2 h-2 bg-primary" />
+             </div>
           </div>
         )}
       </button>
