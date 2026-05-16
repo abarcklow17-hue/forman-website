@@ -8,25 +8,25 @@
     },
     {
       "id": "construction-debris",
-      "description": "Rugged steel trailer being loaded with real construction debris",
-      "imageUrl": "https://picsum.photos/seed/forman-debris-loading/1200/800",
-      "imageHint": "construction debris trailer"
+      "description": "Close-up of a rugged black dump trailer filled with construction debris, drywall, and metal studs",
+      "imageUrl": "https://picsum.photos/seed/forman-debris-trailer/1200/800",
+      "imageHint": "construction debris dump trailer"
     },
     {
       "id": "workers-hauling",
-      "description": "Professional crew in black gear loading heavy furniture",
+      "description": "Professional junk removal crew in dark gear loading heavy furniture",
       "imageUrl": "https://picsum.photos/seed/forman-hauling/1200/800",
       "imageHint": "professional workers hauling"
     },
     {
       "id": "appliance-haul",
-      "description": "Old appliances ready for eco-friendly recycling",
+      "description": "Old refrigerators and stoves ready for eco-friendly recycling",
       "imageUrl": "https://picsum.photos/seed/forman-appliances-recycling/800/600",
       "imageHint": "appliance recycling"
     },
     {
       "id": "garage-cleanout",
-      "description": "Professional garage cleanout in progress",
+      "description": "Professional garage cleanout in progress showing clearing of clutter",
       "imageUrl": "https://picsum.photos/seed/forman-garage-cleanout/1200/800",
       "imageHint": "garage cleanout"
     }

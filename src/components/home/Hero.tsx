@@ -19,13 +19,12 @@ export function Hero() {
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover brightness-[0.5]"
+            className="object-cover brightness-[0.6] scale-105"
             priority
-            data-ai-hint={heroImg.imageHint}
           />
-          {/* Professional Frost-Blur Overlay for readability */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[6px] z-10" />
-          {/* Subtle Vertical Gradient */}
+          {/* Professional Frost-Blur Overlay for maximum readability */}
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-[8px] z-10" />
+          {/* Subtle Vertical Gradient for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-20" />
         </div>
       )}
@@ -68,7 +67,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Static Visual Anchor - Clean line, no artifacts */}
+      {/* Bottom Border Anchor */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent z-40" />
     </section>
   );

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -59,7 +60,7 @@ export function SmartConcierge() {
     // Add user message to history
     setHistory(prev => [...prev, { type: 'user', text: option.label }]);
     
-    // Execute action if it exists (e.g., redirecting to phone or form)
+    // Execute action if it exists
     if (option.action) {
       option.action();
       return;
