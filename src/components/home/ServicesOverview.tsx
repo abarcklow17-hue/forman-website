@@ -1,66 +1,52 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, ArrowRight, Sofa, Monitor, Bed, Box } from 'lucide-react';
+import { Sofa, Monitor, Bed, Box, Trash2, Home, Building2, Hammer, Waves, Thermometer, Briefcase, Shovel } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
 
-const categories = [
-  { title: "Household Furniture", icon: Sofa },
-  { title: "Electronics Recycling", icon: Monitor },
-  { title: "Mattress Disposal", icon: Bed },
-  { title: "Residential Clutter", icon: Box },
+const allServices = [
+  { title: "Furniture Removal", icon: Sofa, desc: "Couches, tables, and full bedroom sets." },
+  { title: "Appliance Recycling", icon: Monitor, desc: "Fridges, washers, and electronics." },
+  { title: "Mattress Disposal", icon: Bed, desc: "Clean and eco-friendly removal." },
+  { title: "Estate Cleanouts", icon: Home, desc: "Full property clearing with care." },
+  { title: "Construction Debris", icon: Hammer, desc: "Sod, drywall, and renovation waste." },
+  { title: "Hot Tub Removal", icon: Thermometer, desc: "Complete breakdown and hauling." },
+  { title: "Office Cleanups", icon: Briefcase, desc: "E-waste and office furniture." },
+  { title: "Yard Waste", icon: Shovel, desc: "Branches, dirt, and storm debris." },
 ];
 
 export function ServicesOverview() {
   return (
     <section className="py-24 bg-white border-y-8 border-black">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-sm font-black text-primary uppercase tracking-[0.4em] mb-4 italic">The Premium Standard</h2>
-              <h3 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8">
-                WHAT WE <span className="text-primary italic">TAKE.</span>
-              </h3>
-              <p className="text-xl font-bold text-zinc-500 max-w-lg">
-                From single item pickups to full estate cleanouts, Forman & Co handles everything with precision and care.
-              </p>
+        <div className="text-center mb-20 space-y-4">
+          <h2 className="text-sm font-black text-primary uppercase tracking-[0.4em] italic">Our Capabilities</h2>
+          <h3 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter uppercase">
+            WE HAUL <span className="text-primary italic">EVERYTHING.</span>
+          </h3>
+          <p className="text-xl font-bold text-zinc-500 max-w-2xl mx-auto">
+            From a single chair to a 14ft truck bed full of concrete, Archie and the crew handle the heavy lifting.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {allServices.map((service, i) => (
+            <div key={i} className="group p-8 bg-zinc-50 brutal-border border-zinc-200 hover:bg-black hover:text-white transition-all duration-300">
+              <div className="w-16 h-16 bg-white brutal-border border-black group-hover:bg-primary group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+                <service.icon className="w-8 h-8" />
+              </div>
+              <h4 className="font-black text-2xl uppercase italic tracking-tighter mb-2">{service.title}</h4>
+              <p className="font-bold text-zinc-500 group-hover:text-zinc-400 text-sm">{service.desc}</p>
             </div>
+          ))}
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {categories.map((cat, i) => (
-                <div key={i} className="flex items-center gap-5 p-6 bg-zinc-50 brutal-border border-zinc-200">
-                  <div className="w-14 h-14 bg-black flex items-center justify-center shrink-0">
-                    <cat.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <span className="font-black text-lg uppercase italic tracking-tighter leading-tight">{cat.title}</span>
-                </div>
-              ))}
-            </div>
-
-            <Button asChild size="lg" className="h-16 px-10 text-xl font-black uppercase brutal-border bg-black text-white hover:bg-black/90">
-              <Link href="/services">Full List of Items</Link>
-            </Button>
-          </div>
-
-          <div className="relative">
-             <div className="brutal-card bg-zinc-100 aspect-square overflow-hidden p-0 relative">
-               <Image 
-                src={PlaceHolderImages.find(p => p.id === 'garage-cleanout')?.imageUrl || ''} 
-                alt="Service"
-                fill
-                className="object-cover"
-               />
-               <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-             </div>
-             <div className="absolute -bottom-10 -left-10 brutal-card-red w-64 p-8 text-center">
-                <p className="text-4xl font-black italic mb-2">100%</p>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em]">Insured & Licensed</p>
-             </div>
-          </div>
+        <div className="flex justify-center">
+          <Button asChild size="lg" className="h-20 px-16 text-2xl font-black uppercase brutal-border bg-primary text-white hover:bg-primary/90">
+            <Link href="/services">View All 50+ Services</Link>
+          </Button>
         </div>
       </div>
     </section>
   );
 }
-
-import { Button } from '@/components/ui/button';
