@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Phone, MapPin } from 'lucide-react';
@@ -13,11 +14,10 @@ export function Hero() {
         <span className="text-[35vw] font-bold italic uppercase leading-none text-white tracking-tighter">FORMAN</span>
       </div>
 
-      {/* Cinematic Background Image */}
+      {/* Cinematic Background Image with Glass Blur */}
       {heroImg && (
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10" />
+          {/* Main cinematic image */}
           <Image 
             src={heroImg.imageUrl} 
             alt={heroImg.description}
@@ -26,13 +26,18 @@ export function Hero() {
             priority
             data-ai-hint={heroImg.imageHint}
           />
+          {/* Glass blur overlay layer */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10" />
+          {/* Vignette gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-20" />
         </div>
       )}
 
       {/* Background Section Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 blur-[200px] rounded-full -z-10" />
       
-      <div className="container mx-auto px-4 relative z-20 text-center space-y-12">
+      <div className="container mx-auto px-4 relative z-30 text-center space-y-12">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-4 px-6 py-2 bg-zinc-900/80 border border-white/10 text-primary text-[10px] font-bold uppercase tracking-[0.5em] mb-4 backdrop-blur-md">
             <MapPin className="w-4 h-4" /> GREELEY & LARIMER COUNTY
@@ -60,7 +65,7 @@ export function Hero() {
       </div>
 
       {/* Decorative Steel Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-transparent via-accent to-transparent z-30" />
+      <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-transparent via-accent to-transparent z-40" />
     </section>
   );
 }
