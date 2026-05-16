@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-truck",
+      "description": "Professional junk removal truck in Northern Colorado landscape",
+      "imageUrl": "https://picsum.photos/seed/junk-truck/1920/1080",
+      "imageHint": "junk removal truck"
+    },
+    {
+      "id": "garage-cleanout",
+      "description": "Organized garage after professional cleanout",
+      "imageUrl": "https://picsum.photos/seed/garage/800/600",
+      "imageHint": "clean garage"
+    },
+    {
+      "id": "construction-debris",
+      "description": "Construction site debris removal",
+      "imageUrl": "https://picsum.photos/seed/construction/800/600",
+      "imageHint": "construction waste"
+    },
+    {
+      "id": "furniture-removal",
+      "description": "Old furniture being hauled away",
+      "imageUrl": "https://picsum.photos/seed/furniture/800/600",
+      "imageHint": "old furniture"
+    },
+    {
+      "id": "appliance-hauling",
+      "description": "Refrigerator and appliances being recycled",
+      "imageUrl": "https://picsum.photos/seed/appliances/800/600",
+      "imageHint": "appliance recycling"
+    },
+    {
+      "id": "owner-archie",
+      "description": "Archie, owner of Forman & Co",
+      "imageUrl": "https://picsum.photos/seed/owner/400/500",
+      "imageHint": "professional worker"
+    }
+  ]
 }
