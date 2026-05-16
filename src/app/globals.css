@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 98%;
     --card: 0 0% 7%;
     --card-foreground: 0 0% 98%;
@@ -20,10 +20,10 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 12%;
+    --border: 0 0% 12%;
+    --input: 0 0% 10%;
     --ring: 0 84% 45%;
-    --radius: 0.5rem;
+    --radius: 0.3rem;
   }
 }
 
@@ -40,46 +40,45 @@
   }
 }
 
-.chrome-text {
-  background: linear-gradient(180deg, #fff 0%, #999 50%, #666 100%);
+.tech-gradient {
+  background: linear-gradient(180deg, rgba(183, 18, 18, 0.1) 0%, transparent 100%);
+}
+
+.slanted-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.slanted-bg::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: var(--background);
+  transform: skewY(-3deg);
+  z-index: 1;
+}
+
+.chrome-title {
+  @apply text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.1)];
+  background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-.industrial-card {
-  @apply bg-card border border-white/10 rounded-xl overflow-hidden shadow-2xl transition-all duration-300;
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+.discovery-input {
+  @apply bg-zinc-900/50 border-white/5 h-12 rounded-none focus:border-primary/50 focus:ring-0 transition-all;
 }
 
-.industrial-card:hover {
-  @apply border-primary/50 -translate-y-1;
-  box-shadow: 0 0 30px rgba(183, 18, 18, 0.1);
-}
-
-.metal-button {
-  @apply relative overflow-hidden rounded-md px-8 py-4 font-black uppercase tracking-widest transition-all active:scale-95;
-  background: linear-gradient(180deg, hsl(var(--primary)) 0%, #8b0000 100%);
-  box-shadow: 0 4px 0 #4a0000, 0 8px 15px rgba(0,0,0,0.4);
-}
-
-.metal-button:hover {
-  @apply -translate-y-0.5;
-  filter: brightness(1.1);
+.btn-premium {
+  @apply bg-primary text-white font-black uppercase italic tracking-widest px-8 py-3 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(183,18,18,0.3)];
 }
 
 .grid-overlay {
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.noise {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
