@@ -2,33 +2,33 @@
   "placeholderImages": [
     {
       "id": "hero-truck",
-      "description": "Cinematic rugged pickup truck and dump trailer at sunset",
-      "imageUrl": "https://picsum.photos/seed/forman-hero/1920/1080",
-      "imageHint": "junk removal truck sunset"
+      "description": "Cinematic black Ram pickup truck with a large Load Trail dump trailer at sunset in a rugged mountain landscape",
+      "imageUrl": "https://picsum.photos/seed/forman-ram-sunset/1920/1080",
+      "imageHint": "black ram truck dump trailer sunset mountain"
     },
     {
       "id": "workers-hauling",
-      "description": "Professional crew hauling heavy furniture with dramatic lighting",
-      "imageUrl": "https://picsum.photos/seed/forman-crew/1200/800",
-      "imageHint": "workers hauling furniture"
+      "description": "Professional crew in black gear loading a heavy leather sofa into a trailer",
+      "imageUrl": "https://picsum.photos/seed/forman-hauling/1200/800",
+      "imageHint": "professional workers hauling furniture"
     },
     {
       "id": "construction-debris",
-      "description": "Rugged construction waste being loaded into a steel trailer",
-      "imageUrl": "https://picsum.photos/seed/forman-debris/1200/800",
-      "imageHint": "construction waste hauling"
+      "description": "Rugged steel trailer being loaded with construction wood and drywall debris",
+      "imageUrl": "https://picsum.photos/seed/forman-debris-loading/1200/800",
+      "imageHint": "construction debris trailer"
     },
     {
       "id": "appliance-haul",
-      "description": "Old appliances being recycled with industrial textures",
-      "imageUrl": "https://picsum.photos/seed/forman-appliances/800/600",
-      "imageHint": "appliance recycling"
+      "description": "Industrial scene of old appliances ready for eco-friendly recycling",
+      "imageUrl": "https://picsum.photos/seed/forman-appliances-recycling/800/600",
+      "imageHint": "appliance recycling yard"
     },
     {
       "id": "garage-cleanout",
-      "description": "Dramatic before/after cleanout scene in a residential garage",
-      "imageUrl": "https://picsum.photos/seed/forman-garage/1200/800",
-      "imageHint": "garage cleanout industrial"
+      "description": "High-contrast shot of a professional garage cleanout in progress",
+      "imageUrl": "https://picsum.photos/seed/forman-garage-cleanout/1200/800",
+      "imageHint": "garage cleanout professional"
     }
   ]
 }

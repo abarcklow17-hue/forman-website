@@ -19,57 +19,62 @@ export function Hero() {
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover grayscale opacity-70"
+            className="object-cover grayscale-0 opacity-80 brightness-75 scale-105"
             priority
             data-ai-hint={heroImg.imageHint}
           />
-          {/* Glassmorphism Overlay */}
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-[6px] z-10" />
-          {/* Edge Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
+          {/* Advanced Glassmorphism Overlay */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[8px] z-10" />
+          {/* Edge Gradients for Depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20 opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-20" />
         </div>
       )}
 
       {/* Content Container */}
-      <div className="container mx-auto px-4 relative z-30 text-center space-y-8 max-w-5xl">
+      <div className="container mx-auto px-4 relative z-30 text-center space-y-10 max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-6"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 glass-morphism text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-4">
-            <MapPin className="w-3.5 h-3.5" /> GREELEY & NORTHERN COLORADO
+          <div className="inline-flex items-center gap-3 px-5 py-2 glass-morphism border-white/20 text-primary text-[11px] font-black uppercase tracking-[0.5em] mb-4">
+            <MapPin className="w-4 h-4" /> GREELEY & WELD COUNTY
           </div>
           
-          <h1 className="text-6xl md:text-[9rem] font-bold leading-[0.8] tracking-tighter italic uppercase chrome-text py-4">
+          <h1 className="text-6xl md:text-[10rem] font-bold leading-[0.85] tracking-tighter italic uppercase chrome-text py-2 drop-shadow-2xl">
             HAUL IT <br />
             <span className="text-primary italic">ALL.</span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed uppercase tracking-tight">
-            PROFESSIONAL MOBILE JUNK REMOVAL. <br />
-            <span className="text-white italic">PREMIUM CLEANOUTS & ECO-RECYCLING.</span>
+          <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto font-bold leading-tight uppercase tracking-tight">
+            PREMIUM MOBILE JUNK REMOVAL. <br />
+            <span className="text-white/90 italic">PROFESSIONAL CLEANOUTS & ECO-RECYCLING.</span>
           </p>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-10"
         >
-          <Link href="/estimate" className="btn-premium w-full sm:w-auto flex items-center justify-center gap-4 text-xs px-12 py-5">
+          <Link href="/estimate" className="btn-premium w-full sm:w-auto flex items-center justify-center gap-4 text-sm px-14 py-6 h-auto transition-transform">
             GET A QUOTE <ArrowRight className="w-5 h-5" />
           </Link>
-          <a href="tel:9704007357" className="w-full sm:w-auto h-16 px-8 glass-morphism hover:bg-white/5 transition-all font-bold uppercase italic tracking-[0.2em] text-[10px] flex items-center justify-center gap-4 text-white">
+          <a href="tel:9704007357" className="w-full sm:w-auto h-20 px-10 glass-morphism hover:bg-white/10 transition-all font-black uppercase italic tracking-[0.3em] text-[11px] flex items-center justify-center gap-4 text-white border-white/10">
             <Phone className="w-4 h-4 text-primary" /> (970) 400-7357
           </a>
         </motion.div>
       </div>
 
-      {/* Bottom Trim */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent z-40" />
+      {/* Dynamic Bottom Trim */}
+      <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary to-transparent z-40 opacity-50" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 animate-bounce">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-white">SCROLL</span>
+        <div className="w-px h-10 bg-gradient-to-b from-white to-transparent" />
+      </div>
     </section>
   );
 }
