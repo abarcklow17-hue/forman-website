@@ -10,7 +10,7 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 overflow-hidden bg-black">
       {/* Background Watermark Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] select-none z-0">
-        <span className="text-[35vw] font-black italic uppercase leading-none text-white tracking-tighter">FORMAN</span>
+        <span className="text-[35vw] font-bold italic uppercase leading-none text-white tracking-tighter">FORMAN</span>
       </div>
 
       {/* Cinematic Background Image */}
@@ -22,7 +22,7 @@ export function Hero() {
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover grayscale opacity-60 transition-all duration-[3s] hover:scale-105"
+            className="object-cover grayscale opacity-60"
             priority
             data-ai-hint={heroImg.imageHint}
           />
@@ -32,38 +32,35 @@ export function Hero() {
       {/* Background Section Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 blur-[200px] rounded-full -z-10" />
       
-      <div className="container mx-auto px-4 relative z-20 text-center space-y-16">
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-4 px-6 py-2.5 bg-zinc-900/80 border border-white/10 text-primary text-[11px] font-black uppercase tracking-[0.5em] mb-4 backdrop-blur-md">
-            <MapPin className="w-4 h-4" /> SERVING GREELEY & LARIMER COUNTY
+      <div className="container mx-auto px-4 relative z-20 text-center space-y-12">
+        <div className="space-y-6">
+          <div className="inline-flex items-center gap-4 px-6 py-2 bg-zinc-900/80 border border-white/10 text-primary text-[10px] font-bold uppercase tracking-[0.5em] mb-4 backdrop-blur-md">
+            <MapPin className="w-4 h-4" /> GREELEY & LARIMER COUNTY
           </div>
           
-          <h1 className="text-7xl md:text-[11rem] font-black leading-[0.8] tracking-tighter italic uppercase chrome-text py-6 drop-shadow-2xl">
+          <h1 className="text-7xl md:text-[10rem] font-bold leading-[0.8] tracking-tighter italic uppercase chrome-text py-4">
             HAUL IT <br />
             <span className="text-primary italic">ALL.</span>
           </h1>
 
-          <p className="text-xl md:text-3xl text-muted-foreground max-w-3xl mx-auto font-black leading-tight uppercase tracking-tighter">
+          <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed uppercase tracking-tight">
             PROFESSIONAL MOBILE JUNK REMOVAL SERVICE. <br />
-            <span className="text-white italic">PREMIUM PROPERTY CLEANOUTS & DISPOSAL.</span>
+            <span className="text-white italic">PREMIUM PROPERTY CLEANOUTS & ECO-RECYCLING.</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center pt-8">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
           <Link href="/estimate" className="btn-premium flex items-center gap-6 text-sm px-14 py-6">
-            GET A FREE QUOTE <ArrowRight className="w-6 h-6" />
+            GET A QUOTE <ArrowRight className="w-6 h-6" />
           </Link>
-          <a href="tel:9704007357" className="group h-20 px-12 border border-white/10 hover:border-white/40 transition-all font-black uppercase italic tracking-[0.3em] text-xs flex items-center gap-5 text-white bg-black/40 backdrop-blur-md metallic-card">
-            <div className="w-10 h-10 rounded-none bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-              <Phone className="w-5 h-5 text-primary group-hover:text-white" />
-            </div> 
-            (970) 400-7357
+          <a href="tel:9704007357" className="group h-16 px-10 border border-white/10 hover:border-white/40 transition-all font-bold uppercase italic tracking-[0.2em] text-[11px] flex items-center gap-5 text-white bg-black/40 backdrop-blur-md metallic-card">
+            <Phone className="w-4 h-4 text-primary" /> (970) 400-7357
           </a>
         </div>
       </div>
 
       {/* Decorative Steel Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-transparent via-primary to-transparent z-30" />
+      <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-transparent via-accent to-transparent z-30" />
     </section>
   );
 }

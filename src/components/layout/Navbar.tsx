@@ -15,16 +15,16 @@ export function Navbar() {
              </div>
           </div>
           <div className="flex flex-col -space-y-1">
-            <span className="font-headline text-2xl font-black tracking-tighter uppercase italic text-white group-hover:text-primary transition-colors leading-none">
+            <span className="font-headline text-2xl font-bold tracking-tighter uppercase italic text-white group-hover:text-primary transition-colors leading-none">
               FORMAN <span className="text-primary">&</span> CO
             </span>
             <span className="text-[9px] font-bold tracking-[0.4em] text-muted-foreground uppercase leading-none pl-1">PREMIUM JUNK REMOVAL</span>
           </div>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-12 text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground">
+        <div className="hidden lg:flex items-center gap-12 text-[11px] font-bold uppercase tracking-[0.4em] text-muted-foreground">
           <Link href="/services" className="hover:text-white transition-colors relative group">
-            PORTFOLIO
+            SERVICES
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full" />
           </Link>
           <Link href="/service-areas" className="hover:text-white transition-colors relative group">
@@ -32,14 +32,14 @@ export function Navbar() {
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full" />
           </Link>
           <Link href="/estimate" className="hover:text-white transition-colors relative group">
-            GET QUOTE
+            ESTIMATE
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full" />
           </Link>
         </div>
 
         <div className="flex items-center gap-4">
           <Link href="/estimate" className="btn-premium text-[10px] py-3.5 px-10">
-            DISCOVERY CALL
+            GET A QUOTE
           </Link>
         </div>
       </div>
