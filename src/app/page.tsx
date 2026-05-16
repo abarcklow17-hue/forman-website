@@ -19,7 +19,7 @@ export default function Home() {
       <div className="border-y border-white/5 py-24 bg-[#050505] relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-16 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16">
             <TrustStat icon={ShieldCheck} label="FULLY INSURED" sub="PROPERTY PROTECTED" />
             <TrustStat icon={Clock} label="SAME-DAY" sub="GUARANTEED QUOTE" />
             <TrustStat icon={Recycle} label="ECO-FRIENDLY" sub="70% RECYCLED" />
@@ -38,11 +38,11 @@ export default function Home() {
             <h3 className="text-6xl md:text-9xl font-black italic chrome-title uppercase leading-[0.85] tracking-tighter">"PROFESSIONAL. <br/>FAST. RUGGED."</h3>
           </div>
           
-          <div className="max-w-5xl mx-auto p-24 metallic-card backdrop-blur-3xl relative group">
+          <div className="max-w-5xl mx-auto p-12 md:p-24 metallic-card backdrop-blur-3xl relative group">
             <div className="absolute -top-6 -left-6 w-20 h-20 border-t-2 border-l-2 border-primary" />
             <div className="absolute -bottom-6 -right-6 w-20 h-20 border-b-2 border-r-2 border-primary" />
             
-            <p className="text-3xl text-muted-foreground italic font-black leading-tight mb-16 uppercase tracking-tighter">
+            <p className="text-2xl md:text-3xl text-muted-foreground italic font-black leading-tight mb-16 uppercase tracking-tighter">
               "ARCHIE AND THE CREW ARE UNMATCHED. THEY CLEARED A MULTI-LOAD GARAGE IN UNDER 3 HOURS. CLEAN, FAST, AND THE PRICE WAS HONORED AS QUOTED."
             </p>
             <div className="flex items-center justify-center gap-6">
@@ -66,8 +66,8 @@ export default function Home() {
 function TrustStat({ icon: Icon, label, sub }: { icon: any, label: string, sub: string }) {
   return (
     <div className="flex items-center gap-6 group">
-      <div className="w-16 h-16 metallic-card flex items-center justify-center group-hover:border-primary transition-all">
-        <Icon className="w-8 h-8 text-primary" />
+      <div className="w-16 h-16 metallic-card flex items-center justify-center group-hover:border-primary transition-all duration-300">
+        <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
       </div>
       <div className="flex flex-col">
         <span className="font-black text-lg italic uppercase tracking-tighter text-white">{label}</span>

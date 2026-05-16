@@ -1,4 +1,5 @@
 import { Sofa, Monitor, Bed, Box, Trash2, Truck, Hammer, Thermometer } from 'lucide-react';
+import Image from 'next/image';
 
 const icons = [
   { label: 'Furniture', icon: Sofa, sub: 'Households & Estates' },
@@ -28,7 +29,7 @@ export function ServicesOverview() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-24 mb-64">
           {icons.map((item, i) => (
             <div key={i} className="flex flex-col items-center text-center space-y-8 group">
-              <div className="w-24 h-24 metallic-card flex items-center justify-center group-hover:scale-110 transition-all duration-500">
+              <div className="w-24 h-24 metallic-card flex items-center justify-center group-hover:scale-110 group-hover:border-primary transition-all duration-500">
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <item.icon className="w-10 h-10 text-primary group-hover:text-white transition-colors" />
               </div>
@@ -78,13 +79,13 @@ function ServiceHighlight({ title, sub, desc, image, reverse, imageHint }: { tit
         <button className="btn-premium text-[11px] py-4 px-12">DISCOVER SERVICES</button>
       </div>
       
-      <div className="flex-1 w-full aspect-[4/3] relative group overflow-hidden border border-white/5">
+      <div className="flex-1 w-full aspect-[4/3] relative group overflow-hidden border border-white/5 metallic-card">
         <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-10" />
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms] grayscale hover:grayscale-0"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms] grayscale group-hover:grayscale-0"
           data-ai-hint={imageHint}
         />
         <div className="absolute bottom-8 left-8 z-30">

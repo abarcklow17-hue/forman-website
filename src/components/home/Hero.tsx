@@ -10,7 +10,7 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 overflow-hidden bg-black">
       {/* Background Watermark Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] select-none z-0">
-        <span className="text-[35vw] font-black italic uppercase leading-none text-white">FORMAN</span>
+        <span className="text-[35vw] font-black italic uppercase leading-none text-white tracking-tighter">FORMAN</span>
       </div>
 
       {/* Cinematic Background Image */}
@@ -22,7 +22,7 @@ export function Hero() {
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover grayscale opacity-60"
+            className="object-cover grayscale opacity-60 transition-all duration-[3s] hover:scale-105"
             priority
             data-ai-hint={heroImg.imageHint}
           />
@@ -34,7 +34,7 @@ export function Hero() {
       
       <div className="container mx-auto px-4 relative z-20 text-center space-y-16">
         <div className="space-y-8">
-          <div className="inline-flex items-center gap-4 px-6 py-2.5 bg-primary/10 border border-primary/40 text-primary text-[11px] font-black uppercase tracking-[0.5em] mb-4 backdrop-blur-md">
+          <div className="inline-flex items-center gap-4 px-6 py-2.5 bg-zinc-900/80 border border-white/10 text-primary text-[11px] font-black uppercase tracking-[0.5em] mb-4 backdrop-blur-md">
             <MapPin className="w-4 h-4" /> SERVING GREELEY & LARIMER COUNTY
           </div>
           
@@ -53,8 +53,8 @@ export function Hero() {
           <Link href="/estimate" className="btn-premium flex items-center gap-6 text-sm px-14 py-6">
             GET A FREE QUOTE <ArrowRight className="w-6 h-6" />
           </Link>
-          <a href="tel:9704007357" className="group h-20 px-12 border border-white/10 hover:bg-white/5 transition-all font-black uppercase italic tracking-[0.3em] text-xs flex items-center gap-5 text-white bg-black/40 backdrop-blur-md">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-all duration-500">
+          <a href="tel:9704007357" className="group h-20 px-12 border border-white/10 hover:border-white/40 transition-all font-black uppercase italic tracking-[0.3em] text-xs flex items-center gap-5 text-white bg-black/40 backdrop-blur-md metallic-card">
+            <div className="w-10 h-10 rounded-none bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-all duration-500">
               <Phone className="w-5 h-5 text-primary group-hover:text-white" />
             </div> 
             (970) 400-7357

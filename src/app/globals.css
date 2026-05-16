@@ -24,6 +24,7 @@
     --input: 0 0% 12%;
     --ring: 0 82% 40%;
     --radius: 0rem;
+    --metallic: 215 8% 55%;
   }
 }
 
@@ -54,6 +55,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+.chrome-title {
+  @apply chrome-text drop-shadow-[0_0_15px_rgba(255,255,255,0.1)];
 }
 
 .grid-overlay {
@@ -91,6 +96,7 @@
 
 .btn-premium:hover::after {
   @apply left-[100%];
+  @apply shadow-[0_0_50px_rgba(183,18,18,0.6)];
 }
 
 .discovery-input {
@@ -98,10 +104,21 @@
 }
 
 .metallic-card {
-  @apply bg-zinc-950 border border-white/5 relative overflow-hidden transition-all hover:border-primary/50;
+  @apply bg-zinc-950/50 border border-white/5 relative overflow-hidden transition-all hover:border-white/20 backdrop-blur-md;
+  background: linear-gradient(135deg, rgba(20,20,20,1) 0%, rgba(30,30,30,1) 100%);
 }
 
 .metallic-card::before {
   content: '';
   @apply absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary/40 hover:bg-primary transition-colors;
 }
