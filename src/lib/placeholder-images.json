@@ -2,33 +2,33 @@
   "placeholderImages": [
     {
       "id": "hero-truck",
-      "description": "Dramatic cinematic shot of a heavy-duty black pickup truck and dump trailer hauling junk at sunset, Northern Colorado landscape",
-      "imageUrl": "https://picsum.photos/seed/junk-truck-hero/1920/1080",
-      "imageHint": "junk removal truck trailer"
+      "description": "Cinematic rugged pickup truck and dump trailer at sunset",
+      "imageUrl": "https://picsum.photos/seed/forman-hero/1920/1080",
+      "imageHint": "junk removal truck sunset"
     },
     {
       "id": "workers-hauling",
-      "description": "Professional crew in black gear hauling heavy furniture, cinematic shadows and industrial lighting",
-      "imageUrl": "https://picsum.photos/seed/workers-hauling/1200/800",
-      "imageHint": "hauling furniture debris"
+      "description": "Professional crew hauling heavy furniture with dramatic lighting",
+      "imageUrl": "https://picsum.photos/seed/forman-crew/1200/800",
+      "imageHint": "workers hauling furniture"
     },
     {
       "id": "construction-debris",
-      "description": "Cinematic shot of construction waste being loaded into a rugged steel dump trailer",
-      "imageUrl": "https://picsum.photos/seed/construction-debris/1200/800",
-      "imageHint": "construction debris removal"
-    },
-    {
-      "id": "garage-cleanout",
-      "description": "Professional garage cleanout scene, high contrast and dramatic lighting",
-      "imageUrl": "https://picsum.photos/seed/garage-cleanout/1200/800",
-      "imageHint": "garage cleanout debris"
+      "description": "Rugged construction waste being loaded into a steel trailer",
+      "imageUrl": "https://picsum.photos/seed/forman-debris/1200/800",
+      "imageHint": "construction waste hauling"
     },
     {
       "id": "appliance-haul",
-      "description": "Old appliances being recycled on a heavy-duty hydraulic lift, metallic textures",
-      "imageUrl": "https://picsum.photos/seed/appliances/800/600",
-      "imageHint": "appliance recycling dump"
+      "description": "Old appliances being recycled with industrial textures",
+      "imageUrl": "https://picsum.photos/seed/forman-appliances/800/600",
+      "imageHint": "appliance recycling"
+    },
+    {
+      "id": "garage-cleanout",
+      "description": "Dramatic before/after cleanout scene in a residential garage",
+      "imageUrl": "https://picsum.photos/seed/forman-garage/1200/800",
+      "imageHint": "garage cleanout industrial"
     }
   ]
 }

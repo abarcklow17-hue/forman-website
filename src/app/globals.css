@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,6 +52,10 @@
   pointer-events: none;
 }
 
+.glass-morphism {
+  @apply bg-black/40 backdrop-blur-xl border border-white/10;
+}
+
 .chrome-text {
   background: linear-gradient(to bottom, #ffffff 0%, #8A8D91 50%, #707070 100%);
   -webkit-background-clip: text;
@@ -69,26 +74,8 @@
   background-size: 60px 60px;
 }
 
-.slanted-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.slanted-bg::before {
-  content: '';
-  position: absolute;
-  top: -150px;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  background: var(--background);
-  transform: skewY(-4deg);
-  z-index: 1;
-}
-
 .btn-premium {
   @apply bg-primary text-white font-bold uppercase italic tracking-[0.2em] px-10 py-5 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(183,18,18,0.4)] border border-primary/50 relative overflow-hidden;
-  font-family: var(--font-inter), sans-serif;
 }
 
 .btn-premium::after {
@@ -98,12 +85,6 @@
 
 .btn-premium:hover::after {
   @apply left-[100%];
-  @apply shadow-[0_0_50px_rgba(183,18,18,0.6)];
-}
-
-.discovery-input {
-  @apply bg-zinc-950 border-white/10 h-16 rounded-none focus:border-primary focus:ring-0 transition-all text-white font-bold uppercase tracking-widest px-6;
-  font-family: var(--font-inter), sans-serif;
 }
 
 .metallic-card {
