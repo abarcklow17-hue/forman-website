@@ -2,7 +2,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CallToAction } from '@/components/shared/CallToAction';
 import { ServicesOverview } from '@/components/home/ServicesOverview';
-import { ShieldCheck, Zap, Star, MapPin } from 'lucide-react';
+import { ShieldCheck, Zap, Star, MapPin, CheckCircle } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -12,9 +12,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CityPage({ params }: { params: { slug: string } }) {
-  const slugParts = params.slug.split('-');
-  if (!params.slug.startsWith('junk-removal-') || slugParts.length < 3) {
+export default async function CityPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const slugParts = slug.split('-');
+  if (!slug.startsWith('junk-removal-') || slugParts.length < 3) {
     return notFound();
   }
 
@@ -35,7 +36,7 @@ export default function CityPage({ params }: { params: { slug: string } }) {
             
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               Best Junk Removal in <br />
-              <span className="text-primary italic">{fullCityName}.</span>
+              <span className="text-primary">{fullCityName}.</span>
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
@@ -103,7 +104,7 @@ export default function CityPage({ params }: { params: { slug: string } }) {
                 <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-primary rounded-full"/> Electronics</span>
                 <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-primary rounded-full"/> Office Junk</span>
               </div>
-              <p className="text-sm text-muted-foreground italic">
+              <p className="text-sm text-muted-foreground">
                 *Don't see your item? Give Archie a call. We haul almost everything except hazardous materials.
               </p>
             </div>
@@ -116,5 +117,3 @@ export default function CityPage({ params }: { params: { slug: string } }) {
     </main>
   );
 }
-
-import { CheckCircle } from 'lucide-react';

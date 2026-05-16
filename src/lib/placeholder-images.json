@@ -3,31 +3,31 @@
     {
       "id": "hero-truck",
       "description": "Cinematic black Ram pickup truck with a large Load Trail dump trailer at sunset",
-      "imageUrl": "https://picsum.photos/seed/forman-ram-sunset/1920/1080",
+      "imageUrl": "/images/hero-truck.png",
       "imageHint": "black ram truck dump trailer"
     },
     {
       "id": "construction-debris",
       "description": "Excavator bucket loading construction debris, wood, and drywall into a rugged black dump trailer on a construction site",
-      "imageUrl": "https://picsum.photos/seed/forman-debris-excavator/1200/800",
+      "imageUrl": "/images/construction-debris.png",
       "imageHint": "excavator loading construction debris dump trailer"
     },
     {
       "id": "workers-hauling",
       "description": "Professional junk removal crew in dark gear loading heavy furniture",
-      "imageUrl": "https://picsum.photos/seed/forman-hauling/1200/800",
+      "imageUrl": "/images/workers-hauling.png",
       "imageHint": "professional workers hauling"
     },
     {
       "id": "appliance-haul",
       "description": "Old refrigerators and stoves ready for eco-friendly recycling",
-      "imageUrl": "https://picsum.photos/seed/forman-appliances-recycling/800/600",
+      "imageUrl": "/images/appliance-haul.png",
       "imageHint": "appliance recycling"
     },
     {
       "id": "garage-cleanout",
       "description": "Professional garage cleanout in progress showing clearing of clutter",
-      "imageUrl": "https://picsum.photos/seed/forman-garage-cleanout/1200/800",
+      "imageUrl": "/images/garage-cleanout.png",
       "imageHint": "garage cleanout"
     }
   ]

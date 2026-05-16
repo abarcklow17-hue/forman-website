@@ -43,21 +43,38 @@ export default function QuotePage() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // In a production environment, this would call a Firebase Function or Email Service
-    console.log("SUBMITTING TO: formanandco@gmail.com", { 
-      ...formData, 
-      photosCount: photos.length 
-    });
-    
-    // Simulate network delay
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      toast({
-        title: "QUOTE REQUEST SENT",
-        description: "Archie has received your request and will contact you shortly.",
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          photos
+        })
       });
-    }, 1500);
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSuccess(true);
+        toast({
+          title: "QUOTE REQUEST SENT",
+          description: "Archie has received your request and will contact you shortly.",
+        });
+      } else {
+        throw new Error(result.error || 'Failed to send');
+      }
+    } catch (error) {
+      toast({
+        title: "ERROR",
+        description: "Failed to send request. Please try calling us instead.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -73,9 +90,9 @@ export default function QuotePage() {
             <div className="w-32 h-32 bg-primary mx-auto flex items-center justify-center shadow-[0_0_50px_rgba(183,18,18,0.5)]">
               <CheckCircle className="w-16 h-16 text-white" />
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold chrome-text uppercase italic tracking-tighter">REQUEST SENT.</h1>
-            <p className="text-xl font-bold text-muted-foreground uppercase tracking-widest">
-              ARCHIE WILL CALL <span className="text-primary">{formData.phone}</span> WITHIN THE HOUR.
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">Request Sent.</h1>
+            <p className="text-xl font-medium text-muted-foreground">
+              Archie will call <span className="text-primary font-bold">{formData.phone}</span> within the hour.
             </p>
             <Button asChild size="lg" className="btn-premium px-12 py-6 h-auto">
               <a href="/">BACK TO HOME</a>
@@ -95,12 +112,12 @@ export default function QuotePage() {
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Header */}
           <div className="text-center space-y-4">
-            <h4 className="text-primary font-bold uppercase tracking-[0.5em] text-[10px] italic">GET A FIRM QUOTE</h4>
-            <h1 className="text-5xl md:text-8xl font-bold chrome-text leading-none uppercase italic tracking-tighter">
-              TELL US WHAT <br/><span className="text-primary">NEEDS TO GO.</span>
+            <h4 className="text-primary font-bold uppercase tracking-wider text-sm">Get A Firm Quote</h4>
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Tell Us What <br/><span className="text-primary">Needs To Go.</span>
             </h1>
-            <p className="text-muted-foreground text-sm font-bold uppercase tracking-[0.2em] max-w-xl mx-auto italic">
-              SEND PHOTOS FOR AN IMMEDIATE, GUARANTEED PRICE MATCH QUOTE.
+            <p className="text-muted-foreground text-base font-medium max-w-xl mx-auto">
+              Send photos for an immediate, guaranteed price match quote.
             </p>
           </div>
 
@@ -109,7 +126,7 @@ export default function QuotePage() {
             <form onSubmit={handleSubmit} className="metallic-card p-8 md:p-12 space-y-10">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">1. CONTACT INFO</Label>
+                  <Label className="text-xs font-bold uppercase tracking-wider text-primary">1. Contact Info</Label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <input 
                       required
@@ -130,7 +147,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="space-y-4">
-                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">2. PROJECT LOCATION</Label>
+                  <Label className="text-xs font-bold uppercase tracking-wider text-primary">2. Project Location</Label>
                   <input 
                     required
                     placeholder="E.G. GREELEY, 80631" 
@@ -141,7 +158,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="space-y-4">
-                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">3. PROJECT DETAILS (THE "ONE BOX")</Label>
+                  <Label className="text-xs font-bold uppercase tracking-wider text-primary">3. Project Details</Label>
                   <textarea 
                     required
                     rows={4}
@@ -153,7 +170,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="space-y-4">
-                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">4. UPLOAD PHOTOS (OPTIONAL BUT RECOMMENDED)</Label>
+                  <Label className="text-xs font-bold uppercase tracking-wider text-primary">4. Upload Photos (Optional)</Label>
                   <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
                     {photos.map((photo, idx) => (
                       <div key={idx} className="relative aspect-square border border-white/10 metallic-card group overflow-hidden">
@@ -196,7 +213,7 @@ export default function QuotePage() {
             {/* Sidebar Contact */}
             <aside className="space-y-8">
               <div className="metallic-card p-8 space-y-8 border-l-4 border-l-primary">
-                <h5 className="font-bold uppercase italic tracking-widest text-white">DIRECT ACCESS</h5>
+                <h5 className="font-bold text-white text-lg">Direct Access</h5>
                 <div className="space-y-4">
                   <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">TEXT PHOTOS TO:</p>
                   <a href="tel:9704007357" className="flex items-center gap-3 text-2xl font-bold italic text-white hover:text-primary transition-colors">

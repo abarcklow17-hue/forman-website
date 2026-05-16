@@ -13,23 +13,23 @@ export function Footer() {
             <div className="w-10 h-10 bg-primary flex items-center justify-center">
               <Truck className="w-5 h-5 text-white" />
             </div>
-            <span className="font-headline text-2xl font-bold tracking-tighter uppercase italic text-white">
-              FORMAN <span className="text-primary">&</span> CO
+            <span className="text-2xl font-bold tracking-tight text-white">
+              Forman <span className="text-primary">&</span> Co
             </span>
           </Link>
-          <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-[0.5em] max-w-sm">
-            NORTHERN COLORADO'S LEADING PROFESSIONAL JUNK REMOVAL SERVICE.
+          <p className="text-muted-foreground text-sm font-medium max-w-sm">
+            Northern Colorado's leading professional junk removal service.
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-12 text-[11px] font-bold text-zinc-400 uppercase tracking-[0.3em]">
+        <nav className="flex flex-wrap justify-center gap-12 text-sm font-semibold text-zinc-400 uppercase tracking-wider">
           <Link href="/estimate" className="hover:text-primary transition-colors">GET A QUOTE</Link>
           <Link href="/services" className="hover:text-primary transition-colors">SERVICES</Link>
           <Link href="/service-areas" className="hover:text-primary transition-colors">SERVICE AREAS</Link>
           <a href="tel:9704007357" className="hover:text-primary transition-colors">CONTACT US</a>
         </nav>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 pt-8 border-t border-white/5 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground italic">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 pt-8 border-t border-white/5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           <div className="flex items-center gap-3">
             <MapPin className="w-4 h-4 text-primary" />
             <span>GREELEY, COLORADO</span>

@@ -36,11 +36,11 @@ export function ServicesOverview() {
           viewport={{ once: true }}
           className="text-center mb-24 space-y-4"
         >
-          <h4 className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] italic">HAULING SERVICES</h4>
-          <h2 className="text-4xl md:text-7xl chrome-title leading-none uppercase italic tracking-tighter">
-            WE HAUL IT ALL.
+          <h4 className="text-primary font-bold uppercase tracking-wider text-sm">HAULING SERVICES</h4>
+          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+            We Haul It All.
           </h2>
-          <p className="text-muted-foreground text-xs font-medium uppercase tracking-[0.1em] max-w-2xl mx-auto py-4">
+          <p className="text-muted-foreground text-base font-medium max-w-2xl mx-auto py-4">
             From single-item pickups to massive multi-load cleanouts, Forman & Co provides professional disposal for every project.
           </p>
         </motion.div>
@@ -62,8 +62,8 @@ export function ServicesOverview() {
                 <svc.icon className="w-6 h-6 text-primary group-hover:text-white" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-lg font-bold text-white tracking-tight italic">{svc.label}</h4>
-                <p className="text-xs text-zinc-400 leading-relaxed font-medium">{svc.desc}</p>
+                <h4 className="text-lg font-bold text-white tracking-tight">{svc.label}</h4>
+                <p className="text-sm text-zinc-400 leading-relaxed font-medium">{svc.desc}</p>
               </div>
             </motion.div>
           ))}

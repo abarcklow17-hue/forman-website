@@ -51,17 +51,17 @@ export default function Home() {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <h4 className="text-primary font-bold uppercase tracking-[0.4em] text-[10px] italic">OPERATIONAL POWER</h4>
-                <h2 className="text-5xl md:text-7xl font-bold chrome-text uppercase italic leading-[0.9] tracking-tighter">
-                  WE DO THE <br/><span className="text-primary">HEAVY LIFTING.</span>
+                <h4 className="text-primary font-bold uppercase tracking-wider text-sm">OPERATIONAL POWER</h4>
+                <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+                  We Do The <br/><span className="text-primary">Heavy Lifting.</span>
                 </h2>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed font-medium uppercase tracking-tight">
+              <p className="text-lg text-muted-foreground leading-relaxed font-medium">
                 From construction debris to full property cleanouts, Forman & Co is Northern Colorado's elite hauling choice. We don't just move junk; we reclaim your space.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {['On-Site Estimates', 'Professional Crew', 'Guaranteed Match', 'Responsible Disposal'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-300">
+                  <div key={item} className="flex items-center gap-3 text-sm font-semibold text-zinc-300">
                     <CheckCircle className="w-5 h-5 text-primary" /> {item}
                   </div>
                 ))}
@@ -85,7 +85,7 @@ export default function Home() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8">
-                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white italic">WELD COUNTY PROJECT // ACTIVE</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-white">Weld County Project // Active</p>
               </div>
             </motion.div>
           </div>
@@ -127,17 +127,17 @@ export default function Home() {
       <section className="py-32 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-12 relative z-10">
           <div className="space-y-6">
-            <h4 className="text-primary font-bold uppercase tracking-[0.6em] text-[10px]">REGIONAL COVERAGE</h4>
-            <h2 className="text-4xl md:text-6xl font-bold chrome-text uppercase italic tracking-tighter leading-none">
-              SERVING GREELEY & <br/><span className="text-primary">SURROUNDING CITIES.</span>
+            <h4 className="text-primary font-bold uppercase tracking-wider text-sm">REGIONAL COVERAGE</h4>
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Serving Greeley & <br/><span className="text-primary">Surrounding Cities.</span>
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm leading-relaxed font-bold uppercase tracking-widest italic opacity-80">
-            BASED IN GREELEY, COLORADO. PROUDLY SERVING WELD & LARIMER COUNTIES INCLUDING WINDSOR, FORT COLLINS, LOVELAND, EVANS, AND EATON.
+          <p className="text-muted-foreground text-base leading-relaxed font-medium">
+            Based in Greeley, Colorado. Proudly serving Weld & Larimer Counties including Windsor, Fort Collins, Loveland, Evans, and Eaton.
           </p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 pt-8">
             {['WELD COUNTY', 'LARIMER COUNTY', 'NORTHERN CO'].map((area) => (
-              <div key={area} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500">
+              <div key={area} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
                 <MapPin className="w-4 h-4 text-primary" /> {area}
               </div>
             ))}
@@ -157,8 +157,8 @@ function TrustStat({ icon: Icon, label, sub }: { icon: any, label: string, sub: 
     <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
       <Icon className="w-5 h-5 text-primary" />
       <div className="flex flex-col">
-        <span className="font-bold text-[10px] text-white leading-none uppercase tracking-widest italic">{label}</span>
-        <span className="text-[8px] font-bold text-muted-foreground uppercase tracking-[0.2em]">{sub}</span>
+        <span className="font-bold text-sm text-white">{label}</span>
+        <span className="text-xs font-medium text-muted-foreground">{sub}</span>
       </div>
     </div>
   );
@@ -169,9 +169,9 @@ function FeatureItem({ num, title, desc }: { num: string, title: string, desc: s
     <motion.div 
       className="metallic-card p-10 space-y-6 group hover:border-primary/40 transition-all duration-300"
     >
-      <span className="text-4xl font-black text-primary/20 italic group-hover:text-primary transition-colors">{num}</span>
-      <h3 className="text-2xl font-bold text-white italic uppercase tracking-tighter">{title}</h3>
-      <p className="text-xs text-zinc-400 leading-relaxed font-medium uppercase tracking-tight">{desc}</p>
+      <span className="text-4xl font-bold text-primary/20 group-hover:text-primary transition-colors">{num}</span>
+      <h3 className="text-xl font-bold text-white">{title}</h3>
+      <p className="text-sm text-zinc-400 leading-relaxed font-medium">{desc}</p>
     </motion.div>
   );
 }

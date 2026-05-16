@@ -38,18 +38,18 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-6"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 border border-white/10 bg-white/5 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-4">
-            <MapPin className="w-3.5 h-3.5" /> GREELEY & WELD COUNTY
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 border border-white/10 bg-white/5 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-wider mb-4 rounded-md">
+            <MapPin className="w-4 h-4" /> GREELEY & WELD COUNTY
           </div>
           
-          <h1 className="text-6xl md:text-[9rem] font-bold leading-[0.85] tracking-tighter italic uppercase chrome-text py-2 drop-shadow-2xl">
-            HAUL IT <br />
-            <span className="text-primary italic">ALL.</span>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white py-2 drop-shadow-xl">
+            Haul It <br />
+            <span className="text-primary">All.</span>
           </h1>
 
-          <p className="text-sm md:text-xl text-muted-foreground max-w-xl mx-auto font-bold leading-tight uppercase tracking-[0.2em] italic">
-            PREMIUM MOBILE JUNK REMOVAL. <br />
-            <span className="text-white/80 not-italic font-medium">PROFESSIONAL CLEANOUTS & ECO-RECYCLING.</span>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-medium leading-relaxed">
+            Premium Mobile Junk Removal. <br />
+            <span className="text-white/80 font-medium">Professional Cleanouts & Eco-Recycling.</span>
           </p>
         </motion.div>
 
@@ -59,11 +59,11 @@ export function Hero() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-6"
         >
-          <Link href="/estimate" className="btn-premium w-full sm:w-auto flex items-center justify-center gap-4 text-xs px-12 py-5 h-auto transition-transform">
+          <Link href="/estimate" className="btn-premium w-full sm:w-auto flex items-center justify-center gap-4 text-sm px-12 py-4 h-auto transition-transform">
             GET A QUOTE <ArrowRight className="w-4 h-4" />
           </Link>
-          <a href="tel:9704007357" className="w-full sm:w-auto h-16 px-10 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all font-bold uppercase italic tracking-[0.3em] text-[10px] flex items-center justify-center gap-4 text-white">
-            <Phone className="w-3.5 h-3.5 text-primary" /> (970) 400-7357
+          <a href="tel:9704007357" className="w-full sm:w-auto h-14 px-10 border border-white/10 bg-zinc-900 hover:bg-zinc-800 transition-all font-semibold text-sm flex items-center justify-center gap-4 text-white rounded-md">
+            <Phone className="w-4 h-4 text-primary" /> (970) 400-7357
           </a>
         </motion.div>
       </div>
