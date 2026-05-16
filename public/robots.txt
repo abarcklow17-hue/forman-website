@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://formanandco.com/sitemap.xml
+Sitemap: https://forman-website.vercel.app/sitemap.xml
