@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -11,27 +10,26 @@ export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-truck');
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden bg-black">
-      {/* Background Cinematic Image */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden">
+      {/* Background Cinematic Image - Moved to z-0 and ensured container is correct */}
       {heroImg && (
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <Image 
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover grayscale-0 opacity-80 brightness-75 scale-105"
+            className="object-cover grayscale-0 brightness-50"
             priority
             data-ai-hint={heroImg.imageHint}
           />
-          {/* Advanced Glassmorphism Overlay */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[8px] z-10" />
-          {/* Edge Gradients for Depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20 opacity-80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-20" />
+          {/* Glassmorphism Blur Layer */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[4px] z-10" />
+          {/* Subtle Vignette for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-20" />
         </div>
       )}
 
-      {/* Content Container */}
+      {/* Content Container - Higher z-index to stay above overlays */}
       <div className="container mx-auto px-4 relative z-30 text-center space-y-10 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -69,12 +67,8 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Dynamic Bottom Trim */}
-      <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary to-transparent z-40 opacity-50" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 animate-bounce">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-white">SCROLL</span>
-        <div className="w-px h-10 bg-gradient-to-b from-white to-transparent" />
-      </div>
+      {/* Static Trim */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-40 opacity-40" />
     </section>
   );
 }

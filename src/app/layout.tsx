@@ -30,8 +30,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="font-body antialiased selection:bg-primary selection:text-primary-foreground bg-black">
-        <div className="noise-overlay" />
+      <body className="font-body antialiased selection:bg-primary selection:text-primary-foreground bg-black overflow-x-hidden">
         {children}
         <Toaster />
       </body>
