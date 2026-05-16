@@ -26,7 +26,7 @@ const STEPS: Record<string, Step> = {
     message: "Excellent. Archie provides the fastest quotes via photos. Would you like to use our site form or contact Archie directly?",
     options: [
       { label: "USE WEBSITE FORM", nextId: null, action: () => window.location.href = '/estimate' },
-      { label: "CONTACT ARCHIE", nextId: null, action: () => window.location.href = 'tel:9704007357' },
+      { label: "CALL ARCHIE NOW", nextId: null, action: () => window.location.href = 'tel:9704007357' },
       { label: "BACK TO MAIN", nextId: 'start' },
     ]
   },
@@ -56,13 +56,16 @@ export function SmartConcierge() {
   ]);
 
   const handleOption = (option: typeof STEPS['start']['options'][0]) => {
+    // Add user message to history
     setHistory(prev => [...prev, { type: 'user', text: option.label }]);
     
+    // Execute action if it exists (e.g., redirecting to phone or form)
     if (option.action) {
       option.action();
       return;
     }
 
+    // Navigate to next step if it exists
     if (option.nextId) {
       const nextStep = STEPS[option.nextId];
       setTimeout(() => {
