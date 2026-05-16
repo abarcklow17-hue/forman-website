@@ -8,7 +8,7 @@
     },
     {
       "id": "workers-hauling",
-      "description": "Professional crew in black gear hauling a heavy mattress and furniture, cinematic shadows and dust",
+      "description": "Professional crew in black gear hauling heavy furniture, cinematic shadows and industrial lighting",
       "imageUrl": "https://picsum.photos/seed/workers-hauling/1200/800",
       "imageHint": "hauling furniture debris"
     },
@@ -20,21 +20,15 @@
     },
     {
       "id": "garage-cleanout",
-      "description": "Cinematic before-and-after of a massive garage cleanout, dramatic lighting",
+      "description": "Professional garage cleanout scene, high contrast and dramatic lighting",
       "imageUrl": "https://picsum.photos/seed/garage-cleanout/1200/800",
       "imageHint": "garage cleanout debris"
     },
     {
       "id": "appliance-haul",
-      "description": "Rusty appliances being recycled on a heavy-duty hydraulic lift, metallic textures",
+      "description": "Old appliances being recycled on a heavy-duty hydraulic lift, metallic textures",
       "imageUrl": "https://picsum.photos/seed/appliances/800/600",
       "imageHint": "appliance recycling dump"
-    },
-    {
-      "id": "owner-portrait",
-      "description": "Archie, owner of Forman & Co, in branded professional workwear in front of a heavy truck",
-      "imageUrl": "https://picsum.photos/seed/owner-archie/600/800",
-      "imageHint": "professional worker portrait"
     }
   ]
 }
