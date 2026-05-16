@@ -8,47 +8,48 @@ import { ShieldCheck, Clock, Recycle, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative selection:bg-primary selection:text-white">
+    <main className="min-h-screen bg-black relative selection:bg-primary selection:text-white">
+      <div className="noise-overlay" />
       <div className="fixed inset-0 grid-overlay pointer-events-none -z-10 opacity-30" />
       
       <Navbar />
       <Hero />
       
       {/* Brand Stat Row */}
-      <div className="border-y border-white/5 py-16 bg-zinc-950/50 relative overflow-hidden">
+      <div className="border-y border-white/5 py-24 bg-[#050505] relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 md:gap-8">
-            <TrustStat icon={ShieldCheck} label="Fully Insured" sub="Property Protected" />
-            <TrustStat icon={Clock} label="Same-Day" sub="Fast Response" />
-            <TrustStat icon={Recycle} label="Eco-Focused" sub="70% Recycled" />
-            <TrustStat icon={CheckCircle} label="Greeley Local" sub="Family Owned" />
+          <div className="flex flex-wrap justify-center md:justify-between items-center gap-16 md:gap-12">
+            <TrustStat icon={ShieldCheck} label="FULLY INSURED" sub="PROPERTY PROTECTED" />
+            <TrustStat icon={Clock} label="SAME-DAY" sub="GUARANTEED QUOTE" />
+            <TrustStat icon={Recycle} label="ECO-FRIENDLY" sub="70% RECYCLED" />
+            <TrustStat icon={CheckCircle} label="GREELEY LOCAL" sub="FAMILY OWNED" />
           </div>
         </div>
       </div>
 
       <ServicesOverview />
 
-      {/* Featured Testimonial Section */}
-      <section className="py-40 slanted-bg bg-zinc-900/10">
-        <div className="container mx-auto px-4 text-center space-y-16 relative z-10">
-          <div className="space-y-4">
-            <h4 className="text-primary font-black uppercase tracking-[0.6em] text-[10px]">Testimonials</h4>
-            <h3 className="text-5xl md:text-7xl font-black italic chrome-title uppercase leading-[0.9]">"Professional. <br/>Fast. Reliable."</h3>
+      {/* Cinematic Testimonial Section */}
+      <section className="py-56 slanted-bg bg-[#050505]">
+        <div className="container mx-auto px-4 text-center space-y-24 relative z-10">
+          <div className="space-y-6">
+            <h4 className="text-primary font-black uppercase tracking-[0.8em] text-[11px]">CLIENT DISCOVERY</h4>
+            <h3 className="text-6xl md:text-9xl font-black italic chrome-title uppercase leading-[0.85] tracking-tighter">"PROFESSIONAL. <br/>FAST. RUGGED."</h3>
           </div>
           
-          <div className="max-w-4xl mx-auto p-16 bg-zinc-950/80 border border-white/5 backdrop-blur-xl relative group">
-            <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary" />
-            <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary" />
+          <div className="max-w-5xl mx-auto p-24 metallic-card backdrop-blur-3xl relative group">
+            <div className="absolute -top-6 -left-6 w-20 h-20 border-t-2 border-l-2 border-primary" />
+            <div className="absolute -bottom-6 -right-6 w-20 h-20 border-b-2 border-r-2 border-primary" />
             
-            <p className="text-2xl text-muted-foreground italic font-medium leading-relaxed mb-12">
-              "Archie and his crew were phenomenal. They took care of a full garage cleanout in under 3 hours. Professional, fast, and the price was exactly what they quoted from the photos."
+            <p className="text-3xl text-muted-foreground italic font-black leading-tight mb-16 uppercase tracking-tighter">
+              "ARCHIE AND THE CREW ARE UNMATCHED. THEY CLEARED A MULTI-LOAD GARAGE IN UNDER 3 HOURS. CLEAN, FAST, AND THE PRICE WAS HONORED AS QUOTED."
             </p>
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center font-black italic text-primary">JD</div>
+            <div className="flex items-center justify-center gap-6">
+              <div className="w-16 h-16 bg-primary flex items-center justify-center font-black italic text-white text-xl">JD</div>
               <div className="text-left">
-                <p className="font-black uppercase italic text-sm tracking-widest text-white">John D.</p>
-                <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Greeley, CO Resident</p>
+                <p className="font-black uppercase italic text-lg tracking-widest text-white">JOHN D.</p>
+                <p className="text-[11px] text-muted-foreground uppercase tracking-[0.4em] font-black">GREELEY, CO RESIDENT</p>
               </div>
             </div>
           </div>
@@ -64,13 +65,13 @@ export default function Home() {
 
 function TrustStat({ icon: Icon, label, sub }: { icon: any, label: string, sub: string }) {
   return (
-    <div className="flex items-center gap-5 group">
-      <div className="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all">
-        <Icon className="w-6 h-6 text-primary" />
+    <div className="flex items-center gap-6 group">
+      <div className="w-16 h-16 metallic-card flex items-center justify-center group-hover:border-primary transition-all">
+        <Icon className="w-8 h-8 text-primary" />
       </div>
       <div className="flex flex-col">
-        <span className="font-black text-sm italic uppercase tracking-wider text-white">{label}</span>
-        <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{sub}</span>
+        <span className="font-black text-lg italic uppercase tracking-tighter text-white">{label}</span>
+        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-muted-foreground">{sub}</span>
       </div>
     </div>
   );

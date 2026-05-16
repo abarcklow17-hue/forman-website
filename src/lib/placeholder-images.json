@@ -2,39 +2,39 @@
   "placeholderImages": [
     {
       "id": "hero-truck",
-      "description": "Professional junk removal truck in Northern Colorado landscape",
-      "imageUrl": "https://picsum.photos/seed/junk-truck/1920/1080",
-      "imageHint": "junk removal truck"
+      "description": "Dramatic cinematic shot of a heavy-duty black pickup truck and dump trailer hauling junk at sunset, Northern Colorado landscape",
+      "imageUrl": "https://picsum.photos/seed/junk-truck-hero/1920/1080",
+      "imageHint": "junk removal truck trailer"
     },
     {
-      "id": "garage-cleanout",
-      "description": "Organized garage after professional cleanout",
-      "imageUrl": "https://picsum.photos/seed/garage/800/600",
-      "imageHint": "clean garage"
+      "id": "workers-hauling",
+      "description": "Professional crew in black gear hauling a heavy mattress and furniture, cinematic shadows and dust",
+      "imageUrl": "https://picsum.photos/seed/workers-hauling/1200/800",
+      "imageHint": "hauling furniture debris"
     },
     {
       "id": "construction-debris",
-      "description": "Construction site debris removal",
-      "imageUrl": "https://picsum.photos/seed/construction/800/600",
-      "imageHint": "construction waste"
+      "description": "Cinematic shot of construction waste being loaded into a rugged steel dump trailer",
+      "imageUrl": "https://picsum.photos/seed/construction-debris/1200/800",
+      "imageHint": "construction debris removal"
     },
     {
-      "id": "furniture-removal",
-      "description": "Old furniture being hauled away",
-      "imageUrl": "https://picsum.photos/seed/furniture/800/600",
-      "imageHint": "old furniture"
+      "id": "garage-cleanout",
+      "description": "Cinematic before-and-after of a massive garage cleanout, dramatic lighting",
+      "imageUrl": "https://picsum.photos/seed/garage-cleanout/1200/800",
+      "imageHint": "garage cleanout debris"
     },
     {
-      "id": "appliance-hauling",
-      "description": "Refrigerator and appliances being recycled",
+      "id": "appliance-haul",
+      "description": "Rusty appliances being recycled on a heavy-duty hydraulic lift, metallic textures",
       "imageUrl": "https://picsum.photos/seed/appliances/800/600",
-      "imageHint": "appliance recycling"
+      "imageHint": "appliance recycling dump"
     },
     {
-      "id": "owner-archie",
-      "description": "Archie, owner of Forman & Co",
-      "imageUrl": "https://picsum.photos/seed/owner/400/500",
-      "imageHint": "professional worker"
+      "id": "owner-portrait",
+      "description": "Archie, owner of Forman & Co, in branded professional workwear in front of a heavy truck",
+      "imageUrl": "https://picsum.photos/seed/owner-archie/600/800",
+      "imageHint": "professional worker portrait"
     }
   ]
 }

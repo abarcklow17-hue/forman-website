@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
     --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 84% 45%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 82% 40%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 63%;
-    --accent: 0 84% 45%;
-    --accent-foreground: 0 0% 98%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 40%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 12%;
-    --input: 0 0% 10%;
-    --ring: 0 84% 45%;
-    --radius: 0.3rem;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 82% 40%;
+    --radius: 0rem;
   }
 }
 
@@ -32,7 +32,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -40,8 +40,27 @@
   }
 }
 
-.tech-gradient {
-  background: linear-gradient(180deg, rgba(183, 18, 18, 0.1) 0%, transparent 100%);
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3C/baseFilter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.chrome-text {
+  background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 50%, #707070 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 .slanted-bg {
@@ -52,33 +71,37 @@
 .slanted-bg::before {
   content: '';
   position: absolute;
-  top: -100px;
+  top: -150px;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: 300px;
   background: var(--background);
-  transform: skewY(-3deg);
+  transform: skewY(-4deg);
   z-index: 1;
 }
 
-.chrome-title {
-  @apply text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.1)];
-  background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.btn-premium {
+  @apply bg-primary text-white font-black uppercase italic tracking-[0.2em] px-10 py-5 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(183,18,18,0.4)] border border-primary/50 relative overflow-hidden;
+}
+
+.btn-premium::after {
+  content: '';
+  @apply absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[45deg] transition-all duration-1000;
+}
+
+.btn-premium:hover::after {
+  @apply left-[100%];
 }
 
 .discovery-input {
-  @apply bg-zinc-900/50 border-white/5 h-12 rounded-none focus:border-primary/50 focus:ring-0 transition-all;
+  @apply bg-zinc-950 border-white/10 h-16 rounded-none focus:border-primary focus:ring-0 transition-all text-white font-bold uppercase tracking-widest px-6;
 }
 
-.btn-premium {
-  @apply bg-primary text-white font-black uppercase italic tracking-widest px-8 py-3 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(183,18,18,0.3)];
+.metallic-card {
+  @apply bg-zinc-950 border border-white/5 relative overflow-hidden transition-all hover:border-primary/50;
 }
 
-.grid-overlay {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
+.metallic-card::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent;
 }
