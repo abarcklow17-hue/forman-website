@@ -12,25 +12,25 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden bg-black">
-      {/* Background Cinematic Image - Optimized Layering */}
+      {/* Background Cinematic Image */}
       {heroImg && (
         <div className="absolute inset-0 z-0">
           <Image 
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover brightness-[0.4]"
+            className="object-cover brightness-[0.5]"
             priority
             data-ai-hint={heroImg.imageHint}
           />
-          {/* Professional Frost-Blur Layer */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[8px] z-10" />
-          {/* Subtle Dynamic Overlay */}
+          {/* Professional Frost-Blur Overlay for readability */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[6px] z-10" />
+          {/* Subtle Vertical Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-20" />
         </div>
       )}
 
-      {/* Content Container - Razor Sharp Focus */}
+      {/* Content Container */}
       <div className="container mx-auto px-4 relative z-30 text-center space-y-12 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -68,7 +68,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Static Visual Anchor */}
+      {/* Static Visual Anchor - Clean line, no artifacts */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent z-40" />
     </section>
   );

@@ -8,7 +8,7 @@ import { Hero } from '@/components/home/Hero';
 import { ServicesOverview } from '@/components/home/ServicesOverview';
 import { CallToAction } from '@/components/shared/CallToAction';
 import { SmartConcierge } from '@/components/home/SmartConcierge';
-import { ShieldCheck, Clock, Recycle, CheckCircle, XCircle, MapPin, Truck, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Clock, Recycle, CheckCircle, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -21,15 +21,6 @@ export default function Home() {
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
   const debrisImg = PlaceHolderImages.find(img => img.id === 'construction-debris');
 
   return (
@@ -37,7 +28,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       
-      {/* Trust Bar - Clean & Minimal */}
+      {/* Trust Bar */}
       <section className="border-y border-white/5 bg-zinc-950/50 backdrop-blur-sm py-12 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -86,14 +77,14 @@ export default function Home() {
               {debrisImg && (
                 <Image 
                   src={debrisImg.imageUrl} 
-                  alt="Construction Debris Hauling" 
+                  alt={debrisImg.description} 
                   fill 
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-80"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-8 left-8">
-                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white italic">WELD COUNTY PROJECT // 0014</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white italic">WELD COUNTY PROJECT // ACTIVE</p>
               </div>
             </motion.div>
           </div>
@@ -179,7 +170,7 @@ function FeatureItem({ num, title, desc }: { num: string, title: string, desc: s
     >
       <span className="text-4xl font-black text-primary/20 italic group-hover:text-primary transition-colors">{num}</span>
       <h3 className="text-2xl font-bold text-white italic uppercase tracking-tighter">{title}</h3>
-      <p className="text-xs text-muted-foreground leading-relaxed font-medium uppercase tracking-tight">{desc}</p>
+      <p className="text-xs text-zinc-400 leading-relaxed font-medium uppercase tracking-tight">{desc}</p>
     </motion.div>
   );
 }

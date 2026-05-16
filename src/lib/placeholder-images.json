@@ -2,33 +2,33 @@
   "placeholderImages": [
     {
       "id": "hero-truck",
-      "description": "Cinematic black Ram pickup truck with a large Load Trail dump trailer at sunset in a rugged mountain landscape",
+      "description": "Cinematic black Ram pickup truck with a large Load Trail dump trailer at sunset",
       "imageUrl": "https://picsum.photos/seed/forman-ram-sunset/1920/1080",
-      "imageHint": "black ram truck dump trailer sunset mountain"
-    },
-    {
-      "id": "workers-hauling",
-      "description": "Professional crew in black gear loading a heavy leather sofa into a trailer",
-      "imageUrl": "https://picsum.photos/seed/forman-hauling/1200/800",
-      "imageHint": "professional workers hauling furniture"
+      "imageHint": "black ram truck dump trailer"
     },
     {
       "id": "construction-debris",
-      "description": "Rugged steel trailer being loaded with construction wood and drywall debris",
+      "description": "Rugged steel trailer being loaded with real construction debris",
       "imageUrl": "https://picsum.photos/seed/forman-debris-loading/1200/800",
-      "imageHint": "construction debris trailer dumpster"
+      "imageHint": "construction debris trailer"
+    },
+    {
+      "id": "workers-hauling",
+      "description": "Professional crew in black gear loading heavy furniture",
+      "imageUrl": "https://picsum.photos/seed/forman-hauling/1200/800",
+      "imageHint": "professional workers hauling"
     },
     {
       "id": "appliance-haul",
-      "description": "Industrial scene of old appliances ready for eco-friendly recycling",
+      "description": "Old appliances ready for eco-friendly recycling",
       "imageUrl": "https://picsum.photos/seed/forman-appliances-recycling/800/600",
-      "imageHint": "appliance recycling yard"
+      "imageHint": "appliance recycling"
     },
     {
       "id": "garage-cleanout",
-      "description": "High-contrast shot of a professional garage cleanout in progress",
+      "description": "Professional garage cleanout in progress",
       "imageUrl": "https://picsum.photos/seed/forman-garage-cleanout/1200/800",
-      "imageHint": "garage cleanout professional"
+      "imageHint": "garage cleanout"
     }
   ]
 }

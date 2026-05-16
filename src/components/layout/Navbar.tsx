@@ -3,7 +3,6 @@
 
 import Link from 'next/link';
 import { Truck } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export function Navbar() {
   return (
