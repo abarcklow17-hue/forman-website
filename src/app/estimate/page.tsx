@@ -7,18 +7,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Camera, Upload, Trash2, Loader2, Sparkles, CheckCircle, Info } from 'lucide-react';
-import { estimateJunkVolumeFromPhotos, type EstimateJunkVolumeFromPhotosOutput } from '@/ai/flows/estimate-junk-volume-from-photos';
+import { Camera, Trash2, Loader2, Send, CheckCircle, Info } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 
-export default function EstimatePage() {
+export default function QuotePage() {
   const { toast } = useToast();
   const [photos, setPhotos] = useState<string[]>([]);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
-  const [isEstimating, setIsEstimating] = useState(false);
-  const [estimate, setEstimate] = useState<EstimateJunkVolumeFromPhotosOutput | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -37,180 +38,160 @@ export default function EstimatePage() {
     setPhotos(prev => prev.filter((_, i) => i !== index));
   };
 
-  const getEstimate = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (photos.length === 0) {
       toast({
-        title: "Missing Photos",
-        description: "Please upload at least one photo for the AI to analyze.",
+        title: "Photos Required",
+        description: "Please add at least one photo of the items you need removed.",
         variant: "destructive"
       });
       return;
     }
 
-    setIsEstimating(true);
-    try {
-      const result = await estimateJunkVolumeFromPhotos({ photos, description });
-      setEstimate(result);
+    setIsSubmitting(true);
+    
+    // Simulate API call/Email submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
       toast({
-        title: "Estimate Ready!",
-        description: "Archie's AI has analyzed your junk pile.",
+        title: "Quote Requested!",
+        description: "Archie will review your photos and get back to you shortly.",
       });
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Estimation Failed",
-        description: "There was an error processing your photos. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsEstimating(false);
-    }
+    }, 1500);
   };
 
+  if (isSuccess) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Navbar />
+        <div className="container mx-auto px-4 pt-48 pb-24 text-center">
+          <div className="max-w-2xl mx-auto brutal-card space-y-8 py-20">
+            <div className="w-20 h-20 bg-primary mx-auto flex items-center justify-center brutal-border">
+              <CheckCircle className="w-12 h-12 text-white" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black">QUOTE SENT!</h1>
+            <p className="text-xl font-bold">
+              Thanks for reaching out. Archie will personally review your request and contact you at <span className="text-primary">{phone || email}</span> with an estimate.
+            </p>
+            <Button asChild size="lg" className="brutal-border bg-black text-white h-16 px-10 text-xl font-black">
+              <a href="/">Back to Home</a>
+            </Button>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
   return (
-    <main className="min-h-screen bg-[#0b0b0b]">
+    <main className="min-h-screen bg-[#f7f7f7] relative">
+      <div className="absolute inset-0 grid-bg pointer-events-none opacity-10" />
       <Navbar />
       <div className="container mx-auto px-4 pt-32 pb-24">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="mb-12 space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold">Instant AI <span className="text-primary italic">Estimator</span></h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Upload a few photos of your junk pile, and our professional AI agent will give you an immediate volume and price range estimate.
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter">GET A <span className="text-primary italic">FREE QUOTE</span></h1>
+            <p className="text-xl font-bold max-w-2xl">
+              Fill out the form below and upload photos of your junk. Archie will get back to you with a professional estimate today.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-1 gap-8">
+            <div className="brutal-card space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label className="text-sm font-black uppercase">Your Name</Label>
+                  <Input 
+                    required
+                    placeholder="John Doe" 
+                    className="h-14 brutal-border bg-white text-lg font-bold"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-sm font-black uppercase">Phone Number</Label>
+                  <Input 
+                    required
+                    type="tel"
+                    placeholder="(970) 555-0123" 
+                    className="h-14 brutal-border bg-white text-lg font-bold"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label className="text-sm font-black uppercase">Email Address (Optional)</Label>
+                <Input 
+                  type="email"
+                  placeholder="john@example.com" 
+                  className="h-14 brutal-border bg-white text-lg font-bold"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
+              </div>
+
               <div className="space-y-4">
-                <Label className="text-sm font-bold uppercase tracking-widest text-muted-foreground">1. Upload Photos</Label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <Label className="text-sm font-black uppercase">Upload Photos of the Items</Label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
                   {photos.map((photo, idx) => (
-                    <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-white/10 group">
+                    <div key={idx} className="relative aspect-square brutal-border bg-white group">
                       <Image src={photo} alt="Upload" fill className="object-cover" />
                       <button 
+                        type="button"
                         onClick={() => removePhoto(idx)}
-                        className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500"
+                        className="absolute -top-2 -right-2 p-1 bg-black text-white brutal-border"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   ))}
-                  <label className="aspect-square border-2 border-dashed border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all group">
+                  <label className="aspect-square border-4 border-dashed border-black flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-primary/5 transition-all">
                     <input type="file" className="hidden" multiple accept="image/*" onChange={handlePhotoUpload} />
-                    <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-all">
-                      <Camera className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
-                    </div>
-                    <span className="text-xs font-bold text-muted-foreground group-hover:text-primary">Add Photo</span>
+                    <Camera className="w-8 h-8" />
+                    <span className="text-[10px] font-black uppercase">Add Photo</span>
                   </label>
+                </div>
+                <div className="flex items-start gap-2 text-xs font-bold text-muted-foreground italic">
+                  <Info className="w-4 h-4 shrink-0" />
+                  <span>The clearer the photos, the more accurate Archie can be with your quote.</span>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <Label className="text-sm font-bold uppercase tracking-widest text-muted-foreground">2. Add Description (Optional)</Label>
+              <div className="space-y-2">
+                <Label className="text-sm font-black uppercase">Job Details</Label>
                 <Textarea 
-                  placeholder="Tell us what we're looking at (e.g., 'Moving out, old furniture in garage')"
-                  className="min-h-[120px] bg-card border-white/10 focus:ring-primary"
+                  placeholder="Tell us what needs to go and where it's located (e.g., 'Old couch in the basement, easy access through garage')"
+                  className="min-h-[150px] brutal-border bg-white text-lg font-bold"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
 
               <Button 
-                onClick={getEstimate} 
-                disabled={isEstimating || photos.length === 0}
-                className="w-full h-16 text-lg font-bold glow-subtle"
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full h-20 text-2xl font-black uppercase brutal-border bg-primary text-white hover:bg-primary/90"
               >
-                {isEstimating ? (
+                {isSubmitting ? (
                   <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" /> Analyzing Pile...
+                    <Loader2 className="w-6 h-6 mr-2 animate-spin" /> Sending...
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-5 h-5 mr-2" /> Generate Instant Estimate
+                    <Send className="w-6 h-6 mr-2" /> Submit Quote Request
                   </>
                 )}
               </Button>
-
-              <div className="flex items-start gap-3 p-4 bg-white/5 border border-white/5 rounded-xl text-xs text-muted-foreground leading-relaxed">
-                <Info className="w-4 h-4 text-primary shrink-0" />
-                <span>
-                  This AI tool provides an approximate estimate based on visual data. Final pricing is determined on-site by Archie once the crew sees the full scope of work.
-                </span>
-              </div>
             </div>
-
-            <div className="sticky top-32">
-              <AnimatePresence mode="wait">
-                {estimate ? (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                  >
-                    <Card className="bg-[#121212] border-primary/20 shadow-2xl overflow-hidden">
-                      <div className="h-2 bg-primary w-full" />
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <CheckCircle className="w-6 h-6 text-green-500" />
-                          Estimate Generated
-                        </CardTitle>
-                        <CardDescription>Based on your photos and description</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-8">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="p-6 bg-white/5 rounded-xl border border-white/5">
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Volume Est.</p>
-                            <p className="text-3xl font-bold">{estimate.estimatedVolumeCubicYards} <span className="text-xs text-muted-foreground">CU/YD</span></p>
-                          </div>
-                          <div className="p-6 bg-white/5 rounded-xl border border-white/5">
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Price Est.</p>
-                            <p className="text-3xl font-bold text-primary">{estimate.estimatedPriceRange}</p>
-                          </div>
-                        </div>
-
-                        {estimate.notes && (
-                          <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Archie's AI Notes</p>
-                            <p className="text-sm leading-relaxed text-muted-foreground italic">
-                              "{estimate.notes}"
-                            </p>
-                          </div>
-                        )}
-
-                        <div className="space-y-4 pt-4 border-t border-white/5">
-                          <Button className="w-full h-14 font-bold" onClick={() => window.location.href = 'tel:9704007357'}>
-                            Book Pickup with Archie
-                          </Button>
-                          <Button variant="outline" className="w-full h-14 font-bold border-white/10" onClick={() => {
-                            setEstimate(null);
-                            setPhotos([]);
-                            setDescription('');
-                          }}>
-                            Start Over
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ) : (
-                  <div className="h-[500px] border-2 border-dashed border-white/5 rounded-2xl flex flex-col items-center justify-center text-center p-12 space-y-4">
-                    <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-4">
-                      <Sparkles className="w-10 h-10 text-white/20" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white/40 tracking-tight">Awaiting Analysis</h3>
-                    <p className="text-muted-foreground text-sm max-w-[250px]">
-                      Upload your photos on the left to see your volume and price estimate here.
-                    </p>
-                  </div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
       <Footer />
     </main>
   );
 }
-
-import { AnimatePresence, motion } from 'framer-motion';

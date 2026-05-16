@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { MessageSquare, X, ArrowRight, Send, User, Bot } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { MessageSquare, X, Bot, Send, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -15,40 +14,40 @@ type Step = {
 const STEPS: Record<string, Step> = {
   start: {
     id: 'start',
-    message: "Hey! I'm the Forman & Co assistant. How can Archie help you today?",
+    message: "Hey! I'm the Forman & Co assistant. Need help getting some junk removed?",
     options: [
-      { label: "Need a junk estimate", nextId: 'estimate' },
-      { label: "Check service areas", nextId: 'areas' },
+      { label: "I need a quote", nextId: 'quote_info' },
+      { label: "Where do you work?", nextId: 'areas' },
       { label: "Talk to Archie", nextId: 'contact' },
     ]
   },
-  estimate: {
-    id: 'estimate',
-    message: "Awesome. Our AI tool can give you a quick range if you have photos, or I can tell you our base pricing.",
+  quote_info: {
+    id: 'quote_info',
+    message: "Sure! To give you a quote, Archie needs to see what he's hauling. I can walk you through our photo upload form.",
     options: [
-      { label: "Try AI Estimator", nextId: null, action: () => window.location.href = '/estimate' },
-      { label: "Standard Pricing", nextId: 'pricing' },
+      { label: "Start Quote Form", nextId: null, action: () => window.location.href = '/estimate' },
+      { label: "How it works", nextId: 'process' },
+    ]
+  },
+  process: {
+    id: 'process',
+    message: "It's simple: 1. Take a few photos. 2. Send them to us via our form. 3. Archie reviews them and calls/texts you with a price.",
+    options: [
+      { label: "Got it, let's go", nextId: null, action: () => window.location.href = '/estimate' },
+      { label: "Back to menu", nextId: 'start' },
     ]
   },
   areas: {
     id: 'areas',
-    message: "We're based in Greeley and serve all of Weld County, including Fort Collins, Loveland, Windsor, and Milliken. Are you in our area?",
+    message: "We're based in Greeley and serve all of Weld County, plus Fort Collins and Loveland. Ready to clear your space?",
     options: [
-      { label: "Yes, I'm in Weld County", nextId: 'contact' },
+      { label: "Yes, I'm in CO", nextId: 'quote_info' },
       { label: "Not sure", nextId: 'contact' },
-    ]
-  },
-  pricing: {
-    id: 'pricing',
-    message: "Our pricing starts at $99 for small single-item pickups. A full trailer load typically ranges from $450-$650 depending on weight. Ready to book?",
-    options: [
-      { label: "Book Now", nextId: null, action: () => window.location.href = '/estimate' },
-      { label: "Ask something else", nextId: 'start' },
     ]
   },
   contact: {
     id: 'contact',
-    message: "The fastest way to get an answer is to call or text Archie directly at (970) 400-7357. Should I help you call now?",
+    message: "The fastest way is to call or text Archie directly at (970) 400-7357. Want me to dial for you?",
     options: [
       { label: "Call Archie", nextId: null, action: () => window.location.href = 'tel:9704007357' },
       { label: "Back to menu", nextId: 'start' },
@@ -88,35 +87,27 @@ export function SmartConcierge() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="w-[350px] bg-card border border-white/10 rounded-2xl shadow-2xl overflow-hidden mb-4 flex flex-col h-[500px]"
+            className="w-[350px] bg-white border-4 border-black rounded-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden mb-4 flex flex-col h-[500px]"
           >
-            <div className="bg-primary p-4 flex items-center justify-between">
+            <div className="bg-black text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="bg-white/20 p-2 rounded-lg">
-                  <Bot className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-sm">Forman Concierge</h4>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-[10px] text-white/70 uppercase tracking-widest font-bold">Online Now</span>
-                  </div>
-                </div>
+                <Bot className="w-5 h-5 text-primary" />
+                <h4 className="font-black uppercase text-sm tracking-tight">FORMAN ASSISTANT</h4>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white transition-colors">
+              <button onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white">
               {history.map((msg, idx) => (
                 <div key={idx} className={cn(
-                  "flex items-start gap-2 max-w-[85%]",
+                  "flex items-start gap-2 max-w-[90%]",
                   msg.type === 'user' ? "ml-auto flex-row-reverse" : "mr-auto"
                 )}>
                   <div className={cn(
-                    "p-3 rounded-2xl text-sm leading-relaxed",
-                    msg.type === 'user' ? "bg-primary text-white rounded-tr-none" : "bg-white/5 text-muted-foreground border border-white/5 rounded-tl-none"
+                    "p-3 border-2 border-black font-bold text-sm",
+                    msg.type === 'user' ? "bg-primary text-white" : "bg-white text-black"
                   )}>
                     {msg.text}
                   </div>
@@ -124,13 +115,13 @@ export function SmartConcierge() {
               ))}
             </div>
 
-            <div className="p-4 border-t border-white/10 bg-black/20">
+            <div className="p-4 border-t-2 border-black bg-[#f0f0f0]">
               <div className="flex flex-wrap gap-2">
                 {STEPS[currentStep].options.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleOption(opt)}
-                    className="px-3 py-2 bg-white/5 hover:bg-primary/20 hover:text-primary border border-white/10 rounded-lg text-xs font-bold transition-all"
+                    className="px-3 py-2 bg-white hover:bg-black hover:text-white border-2 border-black text-[10px] font-black uppercase transition-all"
                   >
                     {opt.label}
                   </button>
@@ -144,11 +135,11 @@ export function SmartConcierge() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300",
-          isOpen ? "bg-card rotate-90 scale-90" : "bg-primary hover:scale-105 active:scale-95"
+          "w-16 h-16 brutal-border flex items-center justify-center transition-all duration-300",
+          isOpen ? "bg-white rotate-90" : "bg-primary hover:bg-primary/90"
         )}
       >
-        {isOpen ? <X className="w-8 h-8 text-white" /> : <MessageSquare className="w-8 h-8 text-white" />}
+        {isOpen ? <X className="w-8 h-8 text-black" /> : <MessageSquare className="w-8 h-8 text-white" />}
       </button>
     </div>
   );

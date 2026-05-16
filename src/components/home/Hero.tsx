@@ -1,79 +1,54 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck, Zap, Star, MapPin, ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-truck');
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src={heroImg?.imageUrl || ''} 
-          alt={heroImg?.description || 'Forman & Co Truck'}
-          fill
-          className="object-cover opacity-30 grayscale-[0.5]"
-          priority
-          data-ai-hint="junk removal truck"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent" />
-      </div>
-
+    <section className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-white">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
-            <Zap className="w-3 h-3" /> Same-Day Availability in Weld County
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-10">
+            <div className="inline-block border-2 border-black px-4 py-1 font-black text-sm uppercase tracking-widest bg-white">
+              Professional Mobile Junk Removal Service
+            </div>
+            
+            <h1 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter">
+              WE HAUL, <br />
+              <span className="text-primary">YOU RELAX.</span>
+            </h1>
+
+            <p className="text-2xl font-bold leading-tight max-w-xl">
+              Professional junk removal in Greeley and Northern Colorado. Same-day service, fair pricing, and eco-friendly disposal.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 pt-4">
+              <Button asChild size="lg" className="h-16 px-10 text-xl font-black uppercase brutal-border bg-black text-white hover:bg-black/90">
+                <Link href="/estimate">
+                  Schedule Now
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="h-16 px-10 text-xl font-black uppercase brutal-border bg-primary text-white border-black hover:bg-primary/90">
+                <a href="tel:9704007357">Text The Crew</a>
+              </Button>
+            </div>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Fast, Reliable <br />
-            <span className="text-primary italic">Junk Removal</span> <br />
-            in Northern Colorado.
-          </h1>
 
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
-            From single item pickups to full estate cleanouts, Archie and the crew provide professional, local-business service you can trust. Serving Greeley, Fort Collins, and beyond.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button asChild size="lg" className="h-14 px-8 text-base font-bold">
-              <Link href="/estimate" className="flex items-center gap-2">
-                Get Instant Quote <ChevronRight className="w-4 h-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base font-bold bg-white/5 border-white/10 hover:bg-white/10">
-              <a href="tel:9704007357">Call (970) 400-7357</a>
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/5">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-primary font-bold">
-                <ShieldCheck className="w-4 h-4" />
-                <span className="text-xs uppercase tracking-widest">Licensed & Insured</span>
-              </div>
+          <div className="lg:col-span-5 relative">
+            <div className="brutal-card relative z-10 p-2 overflow-hidden aspect-[4/5]">
+               <Image 
+                src={heroImg?.imageUrl || ''} 
+                alt="Forman & Co Truck"
+                fill
+                className="object-cover grayscale"
+                priority
+              />
             </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-primary font-bold">
-                <Star className="w-4 h-4 fill-primary" />
-                <span className="text-xs uppercase tracking-widest">5-Star Rated</span>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-primary font-bold">
-                <Zap className="w-4 h-4" />
-                <span className="text-xs uppercase tracking-widest">Same-Day Pickup</span>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-primary font-bold">
-                <MapPin className="w-4 h-4" />
-                <span className="text-xs uppercase tracking-widest">Locally Owned</span>
-              </div>
-            </div>
+            {/* Decorative background box */}
+            <div className="absolute top-12 -right-8 w-full h-full bg-primary -z-0 border-4 border-black" />
           </div>
         </div>
       </div>
