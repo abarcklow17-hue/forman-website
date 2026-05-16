@@ -80,6 +80,7 @@ export default function Home() {
                   alt={debrisImg.description} 
                   fill 
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700 opacity-80"
+                  data-ai-hint={debrisImg.imageHint}
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

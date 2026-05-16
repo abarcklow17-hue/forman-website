@@ -19,11 +19,11 @@ export function Hero() {
             src={heroImg.imageUrl} 
             alt={heroImg.description}
             fill
-            className="object-cover brightness-[0.6] scale-105"
+            className="object-cover brightness-[0.7] scale-105"
             priority
           />
-          {/* Professional Frost-Blur Overlay for maximum readability */}
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-[8px] z-10" />
+          {/* Professional Frost-Blur Overlay - Glassmorphism */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[12px] z-10" />
           {/* Subtle Vertical Gradient for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-20" />
         </div>
